@@ -86,7 +86,7 @@ def acces_dict():
     print(child1_name,child2_name)
 acces_dict()
 '''
-
+'''
 def test_equal_operators(name):
     if name == "Bond":
         print("Welcome on board 007.")
@@ -94,3 +94,36 @@ def test_equal_operators(name):
         print("Good morning " + name)
 
 test_equal_operators("Bond")
+'''
+
+#function for testing evens 
+'''
+def evens(i):
+    if i % 2 == 0:
+        return True
+    else:
+        return False
+
+
+
+
+print(evens(99))
+print(evens(98))
+
+print(99.09-int(99.09))
+'''
+''''treepersqkm is a dictionary showing the tree number of countries per square kilometer for random countries with sizeable population numbers. Write a function named "moretrees" that returns a list of country names with more than 20.000 trees per square kilometer.'''
+treepersqkm = {"Finland": 90652, "Taiwan": 69593, "Japan": 49894, "Russia": 41396, "Brazil": 39542, "Canada": 36388, "Bulgaria": 24987, "France": 24436, "Greece": 24323, "United States": 23513, "Turkey": 11126, "India": 11109, "Denmark": 6129, "Syria": 534, "Saudi Arabia": 1}
+
+def moretrees(dict):
+    lst = []
+    for key,value in dict.items():
+        print("this is key"+key)
+        print("this is value"+str(value))
+        if value > 20.000:
+            print(value)
+            print(key)
+            lst.append(key)
+            print(lst)
+    return lst
+print(moretrees(treepersqkm))
