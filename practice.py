@@ -113,6 +113,7 @@ print(evens(98))
 print(99.09-int(99.09))
 '''
 ''''treepersqkm is a dictionary showing the tree number of countries per square kilometer for random countries with sizeable population numbers. Write a function named "moretrees" that returns a list of country names with more than 20.000 trees per square kilometer.'''
+'''
 treepersqkm = {"Finland": 90652, "Taiwan": 69593, "Japan": 49894, "Russia": 41396, "Brazil": 39542, "Canada": 36388, "Bulgaria": 24987, "France": 24436, "Greece": 24323, "United States": 23513, "Turkey": 11126, "India": 11109, "Denmark": 6129, "Syria": 534, "Saudi Arabia": 1}
 
 def moretrees(dict):
@@ -127,3 +128,33 @@ def moretrees(dict):
             print(lst)
     return lst
 print(moretrees(treepersqkm))
+'''
+'''
+str = "Oranges and lemons, Say the bells of St. Clement's. You owe me three farthings, Say the bells of St. Martin's"
+
+def count_l(a):
+    count = 0
+    # string = str.split()
+    # print(string)
+    for word in str.split():
+        print("thos os the word"+ word)
+        if 'l' in word:
+            count +=1
+    return count
+    
+
+print(count_l(str))
+'''
+lst1=["Sam", "", "Ben", "Olivia", "Alicia"]
+def name_adder(list):
+    i = 0
+    new_list = []
+    while i < len(list):
+        if list[i] != "":
+            new_list.append(list[i])
+        else:
+            break
+        i = i+1
+    return new_list
+
+print(name_adder(lst1))
