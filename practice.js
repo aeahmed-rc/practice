@@ -18,7 +18,7 @@ take list of numbers reverse them , remove the spaces
 add them to another list that we reversed 
 return the answer in a list and reversed
 */
-
+/*
 let lst1 = [2,4,3]
 let lst2 = [5,6,4]
 var addTwoNumbers = function(l1, l2) {
@@ -30,9 +30,10 @@ var addTwoNumbers = function(l1, l2) {
     console.log(answer)
 };
 addTwoNumbers(lst1,lst2)
+*/
 
 // to run go to terminal node <filename>
-
+/*
 function twoSums(nums,target){
     let values = []
     for(let i = 0;i<nums.length;i++){
@@ -47,4 +48,41 @@ function twoSums(nums,target){
     }
     return values
 }
-console.log("return",twoSums([2,7,10,11],9))
+console.log("return",twoSums([2,8,10,7,11],9))
+*/
+
+// Given a string s, return the longest palindromic substring in s
+//Input: s = "babad"
+//Output: "bab"
+//Explanation: "aba" is also a valid answer.
+
+var longestPalindrome = function(s){
+    let ns =[]
+    let new_words = []
+    let longest_pal = ""
+for(var i = 0; i<s.length;i++){
+    ns.push(s[i])
+    // console.log(ns)
+     if(ns.length >2){
+        let word = ns.join('')
+        // console.log(word)
+        let reversed = word.split('').reverse().join('')
+         if(word == reversed){
+            new_words.push(word)
+            console.log(new_words) 
+         }
+         for(var j = 0;j<new_words.length;j++){
+             new_words_len = 
+         }
+
+        
+      
+     }
+    
+    // let reversed_ns = ns.split('').reverse().join('')
+    // if(ns == reversed_ns){
+    //     console.log(reversed_ns)
+    // }
+}
+}
+longestPalindrome("babad")
