@@ -30,3 +30,21 @@ var addTwoNumbers = function(l1, l2) {
     console.log(answer)
 };
 addTwoNumbers(lst1,lst2)
+
+// to run go to terminal node <filename>
+
+function twoSums(nums,target){
+    let values = []
+    for(let i = 0;i<nums.length;i++){
+        for(let j = i+1;j<nums.length;j++){
+            if(nums[i]+nums[j] == target){
+
+                console.log("in if statemtn")
+                values.push(i,j)
+                console.log(values)
+            }
+        }
+    }
+    return values
+}
+console.log("return",twoSums([2,7,10,11],9))
