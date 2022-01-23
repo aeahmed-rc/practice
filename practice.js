@@ -56,33 +56,21 @@ console.log("return",twoSums([2,8,10,7,11],9))
 //Output: "bab"
 //Explanation: "aba" is also a valid answer.
 
-var longestPalindrome = function(s){
-    let ns =[]
-    let new_words = []
-    let longest_pal = ""
-for(var i = 0; i<s.length;i++){
-    ns.push(s[i])
-    // console.log(ns)
-     if(ns.length >2){
-        let word = ns.join('')
-        // console.log(word)
-        let reversed = word.split('').reverse().join('')
-         if(word == reversed){
-            new_words.push(word)
-            console.log(new_words) 
-         }
-         for(var j = 0;j<new_words.length;j++){
-             new_words_len = 
-         }
+/*
+Given an integer x, return true if x is palindrome integer.
 
-        
-      
-     }
-    
-    // let reversed_ns = ns.split('').reverse().join('')
-    // if(ns == reversed_ns){
-    //     console.log(reversed_ns)
-    // }
-}
-}
-longestPalindrome("babad")
+An integer is a palindrome when it reads the same backward as forward.
+
+For example, 121 is a palindrome while 123 is not.*/
+
+var isPalindrome = function(x) {
+    let palindrome = parseInt(x.toString().split('').reverse().join('')) // convert x to string so it can be reversed 
+    if(palindrome == x){
+        return true 
+        console.log("works")
+    }
+    else{
+        return false 
+    }
+};
+isPalindrome(121)
