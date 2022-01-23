@@ -18,19 +18,21 @@ take list of numbers reverse them , remove the spaces
 add them to another list that we reversed 
 return the answer in a list and reversed
 */
-/*
+
 let lst1 = [2,4,3]
 let lst2 = [5,6,4]
 var addTwoNumbers = function(l1, l2) {
     reversed_lst1 = l1.reverse().join('')
+    console.log(reversed_lst1)
     reversed_lst2 = l2.reverse().join('')
     new_value = parseInt(reversed_lst2) + parseInt(reversed_lst1)
-    answer = (new_value).toString(10).split("").map(Number).reverse()
+    console.log(new_value)
+    answer = (new_value).toString(10).split("").map(Number).reverse().join('')
 
     console.log(answer)
 };
 addTwoNumbers(lst1,lst2)
-*/
+
 
 // to run go to terminal node <filename>
 /*
@@ -62,15 +64,16 @@ Given an integer x, return true if x is palindrome integer.
 An integer is a palindrome when it reads the same backward as forward.
 
 For example, 121 is a palindrome while 123 is not.*/
-
+/*
 var isPalindrome = function(x) {
-    let palindrome = parseInt(x.toString().split('').reverse().join('')) // convert x to string so it can be reversed 
-    if(palindrome == x){
-        return true 
-        console.log("works")
-    }
-    else{
-        return false 
-    }
+    let s =x.toString()
+    console.log(s)
+    let spl = s.split('')
+    console.log(spl)
+    let rev = spl.reverse().join('')
+    console.log(rev)
+     // convert x to string so it can be reversed 
+  
 };
 isPalindrome(121)
+*/
