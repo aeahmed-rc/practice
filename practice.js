@@ -1,4 +1,4 @@
-console.log("hello")
+console.log("hello");
 
 /*
 You are given two non-empty linked lists representing two non-negative integers. 
@@ -19,20 +19,19 @@ add them to another list that we reversed
 return the answer in a list and reversed
 */
 
-let lst1 = [2,4,3]
-let lst2 = [5,6,4]
-var addTwoNumbers = function(l1, l2) {
-    reversed_lst1 = l1.reverse().join('')
-    console.log(reversed_lst1)
-    reversed_lst2 = l2.reverse().join('')
-    new_value = parseInt(reversed_lst2) + parseInt(reversed_lst1)
-    console.log(new_value)
-    answer = (new_value).toString(10).split("").map(Number).reverse().join('')
+let lst1 = [2, 4, 3];
+let lst2 = [5, 6, 4];
+var addTwoNumbers = function (l1, l2) {
+  reversed_lst1 = l1.reverse().join("");
+  console.log(reversed_lst1);
+  reversed_lst2 = l2.reverse().join("");
+  new_value = parseInt(reversed_lst2) + parseInt(reversed_lst1);
+  console.log(new_value);
+  answer = new_value.toString(10).split("").map(Number).reverse().join("");
 
-    console.log(answer)
+  console.log(answer);
 };
-addTwoNumbers(lst1,lst2)
-
+addTwoNumbers(lst1, lst2);
 
 // to run go to terminal node <filename>
 /*
@@ -77,3 +76,36 @@ var isPalindrome = function(x) {
 };
 isPalindrome(121)
 */
+
+
+// function to check for uppercase
+// only first letter is capital or all would be correct , if first and only last are capital then it would be false
+var detectCapitalUse = function(word) {
+    let character = ''
+    let count = 0
+    for(let i = 0;i<word.length;i++){
+        character = word.charAt(i)
+        console.log('hi')
+        if(character == character.toUpperCase()){
+            count+=1
+        }else{
+            console.log(character)
+            continue
+        }
+   
+   
+    }
+    if(word.length == count || count == 1){
+        console.log('true')
+        return true
+        
+    }else{
+        console.log('false')
+        return false 
+    }
+        
+  
+};
+detectCapitalUse("USA")
+// condtions: 1st letter only, all letters , or none
+// all letters get word count, get each character if capital increase count +1, if count and word count = then true
