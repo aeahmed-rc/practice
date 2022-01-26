@@ -85,27 +85,25 @@ var detectCapitalUse = function(word) {
     let count = 0
     for(let i = 0;i<word.length;i++){
         character = word.charAt(i)
-        console.log('hi')
         if(character == character.toUpperCase()){
             count+=1
         }else{
-            console.log(character)
+           
             continue
         }
    
-   
     }
-    if(word.length == count || count == 1){
-        console.log('true')
+    if(word.length == count ||  count == 0 || count == 1 && word.charAt(0) == word.charAt(0).toUpperCase() ){
+     
         return true
         
     }else{
-        console.log('false')
+     
         return false 
     }
         
   
 };
-detectCapitalUse("USA")
+detectCapitalUse("f")
 // condtions: 1st letter only, all letters , or none
 // all letters get word count, get each character if capital increase count +1, if count and word count = then true
