@@ -84,7 +84,7 @@ var detectCapitalUse = function(word) {
     let character = ''
     let count = 0
     for(let i = 0;i<word.length;i++){
-        character = word.charAt(i)
+        character = word.charAt(i) // or word[i] could have worked 
         if(character == character.toUpperCase()){
             count+=1
         }else{
