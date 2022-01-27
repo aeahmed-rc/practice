@@ -107,3 +107,22 @@ var detectCapitalUse = function(word) {
 detectCapitalUse("f")
 // condtions: 1st letter only, all letters , or none
 // all letters get word count, get each character if capital increase count +1, if count and word count = then true
+
+
+//Your task is to remove all consecutive duplicate words from a string, leaving only first words entries. For example:
+const removeConsecutiveDuplicates = s => {// your perfect code...
+    // put the words in array , so i can loop through them
+     //take out duplicate if before it came same word
+     let arr = s.split(' ')
+     let newarr=[]
+     console.log(arr)
+     for(let i = 0;i<=arr.length;i++){
+       if(arr[i] != arr[i+1]){
+         newarr.push(arr[i])
+     
+       }
+   
+     }
+      return newarr.join(' ')
+   }
+   removeConsecutiveDuplicates('alpha gamma gamma beta beta alpha ')
