@@ -48,3 +48,45 @@ function findNeedle(haystack) {
     }
     // your code here
   }
+
+
+  function remove (string) {
+    let newstring = string.replaceAll('!','')
+    console.log(newstring)
+    console.log(`${newstring}`+ '!')
+    
+     return  `${newstring +'!'}`;  
+   }
+
+
+   function remove (string) {
+    let newstring = string.split('!').join('')
+    console.log(newstring)
+    // console.log(`${newstring}`+ '!')
+    
+     return  `${newstring +'!'}`;  
+   }
+   remove('Hi!!!')
+
+
+   /* You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.
+If it is a square, return its area. If it is a rectangle, return its perimeter. */
+// area of square is l*w, perimeter of rectangle is add all 4 sides 
+const areaOrPerimeter = function(l , w) {
+    if(l == w){
+      return l*w
+    }else{
+      return 2*(l+w)
+    }
+  };
+
+  /* Write a function that accepts arbitrary X and Y resolutions and converts them into resolutions with a 16:9 aspect ratio that maintain equal height. Round your answers up to the nearest integer. */
+  function aspectRatio(x,y){
+    let result = []
+    let asp = Math.ceil((16/9) * y)
+    result = [asp,y]
+  
+  
+  return result
+  
+  }
