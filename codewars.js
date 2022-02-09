@@ -1,35 +1,44 @@
 console.log("hello");
-/* Remove an exclamation mark from the end of a string.  */
-function remove (string) {
-    if(string.slice(-1)=='!'){
-        return string.slice(0,-1)
-    }else{
-      return string
-    }
-      
-   
-   }
-remove("!Hi")
-
-function countPositivesSumNegatives(input) {
+/* When you check if they are ready their answers are in a dictionary and will either be: aye or nay */
+/* const cannonsReady = (gunners) => {
+    let values = Object.values(gunners)
     let count = 0
-    let total = 0
-    console.log(input)
-   if(Array.isArray(input) && input.length != 0){
-    console.log(input)
-      for(let i = 0;i<input.length;i++){
-      if(input[i]>0){
-        count++
-      }else if(input[i]<0){
-        total = total + input[i]
+    console.log(values)
+      for(let i = 0;i<values.length;i++){
+        if(values[i] == 'aye'){
+          count++
+        }else{
+          continue
+        }
+        
       }
-      
-  }
-    return [count,total];
-   }else{
-       console.log("here")
-     return []
-   }
-   
-    }
-  countPositivesSumNegatives([])
+      if(count == values.length){
+        return 'Fire!'
+      }else{
+        return 'Shiver me timbers!'
+      }
+    } */
+    /* shorter code then above, lessen time complexity  */
+    const cannonsReady = (gunners) => {
+        let values = Object.values(gunners)
+        let words = values.filter(word => word == 'aye')
+       return (words.length == values.length ? 'Fire!':'Shiver me timbers!')
+      }
+
+      function cannons(gunners){
+        for(var i in gunners){
+            console.log(i)
+        }
+      }cannons({'mike':'aye','john':'aye'})
+
+      function remove (string) {  
+        for(let i =0;i<string.length;i++){
+          if(string[string.length-1]=='!'){
+            string = string.slice(0,-1)
+          }else{
+            return string
+          }
+        }
+          return string
+        }
+        remove('Hi!!')
