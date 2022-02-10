@@ -1,44 +1,64 @@
 console.log("hello");
-/* When you check if they are ready their answers are in a dictionary and will either be: aye or nay */
-/* const cannonsReady = (gunners) => {
-    let values = Object.values(gunners)
-    let count = 0
-    console.log(values)
-      for(let i = 0;i<values.length;i++){
-        if(values[i] == 'aye'){
-          count++
-        }else{
-          continue
-        }
-        
-      }
-      if(count == values.length){
-        return 'Fire!'
-      }else{
-        return 'Shiver me timbers!'
-      }
-    } */
-    /* shorter code then above, lessen time complexity  */
-    const cannonsReady = (gunners) => {
-        let values = Object.values(gunners)
-        let words = values.filter(word => word == 'aye')
-       return (words.length == values.length ? 'Fire!':'Shiver me timbers!')
-      }
+/* working with regex */
+function shortcut (string) {
+    let word = string.replace(/[aeiou]/g,'')
+    return word
+  }
 
-      function cannons(gunners){
-        for(var i in gunners){
-            console.log(i)
-        }
-      }cannons({'mike':'aye','john':'aye'})
+  
+  /* You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters. */
 
-      function remove (string) {  
-        for(let i =0;i<string.length;i++){
-          if(string[string.length-1]=='!'){
-            string = string.slice(0,-1)
-          }else{
-            return string
-          }
+  function getMiddle(s)
+{
+ // get length of s if even the middle two is half and plus 1
+  //if odd then add 1 to length and divde by 2 and add 1 will give 
+  //Code goes here!
+  let char = ""
+  let x = ''
+  let y =''
+  let len = s.length/2
+  let lenodd = s.length+1
+    if(s.length %2 == 0){
+      x = s[len]
+      y =s[len-1]
+     char = y+x
+  }else{
+    x = s[(lenodd/2)-1]
+    char = x
+  }
+  return char
+}
+
+function practiceslice(){
+    let s = 'testg'
+    console.log(s.slice(1.5,3))
+}
+practiceslice()
+
+  function decode(string) {
+    let decodedString = ''
+   let decodeone={0:5,
+             1:9,
+             2:8,
+             3:7,
+             4:6
+             }
+    
+    for(let i =0;i<string.length;i++){
+        for(const [key,value] of Object.entries(decodeone)){
+            if(string[i] == key){
+                decodedString += value
+                // console.log(decodedString)
+            }else if(string[i] == value){
+                decodedString+=key
+                // console.log(decodedString)
+            }else{
+                continue
+            }
         }
-          return string
-        }
-        remove('Hi!!')
+    }
+ return decodedString
+  }
+  
+
+ 
