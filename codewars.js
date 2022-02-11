@@ -61,4 +61,22 @@ practiceslice()
   }
   
 
- 
+  const decode = s => s.replace(/./g, c => '5987604321'[c]);
+  const decode = string => [...string].map($ => '5987604321'[$]).join('')
+
+  /* linked list length */
+  function length(head) {
+    this.head = head
+    let count = 0
+    if(head == null){
+      return count
+    }
+    while (head != null) {
+                if (count == head.data)
+                    return head.data;
+                count++;
+                head = head.next;
+            }
+    
+      return count;
+        }
