@@ -110,19 +110,60 @@ function getCount(str) {
       // system B starts with card price + ticket price and every time they go ticket price is chepend buy perc
     let count=1
     let systemA = 0
-    let systemB = 0
-    let cardo = card + (ticket*perc)
     let newtick = ticket
-    while(systemB>systemA){
+    let systemB = card
+    // console.log(systemB)
+    while(systemA<=systemB){
         
       systemA = ticket *count
-      systemB =  card +(ticket *perc)
-      console.log("this is A"+systemA)
-      console.log(systemB)
+      console.log(systemA)
+      newtick = newtick *perc
+      systemB = systemB + newtick
+      console.log(Math.round(systemB))
+    //   console.log("this is A"+systemA)
+      
     
       count++
       
     }
   console.log(count) 
 };
-movie(500, 15, 0.9)
+
+
+
+const seven = m => {
+    // get last digit of m aka lastdigit and then other remaining digits save
+// multiply lastdigit * 2
+// subtract lastdigit by remaing numbers
+//check if divisible
+// if divisible then get the divisble number and how many times we got last digit
+// if not divisible try then next last digit repeat steps
+// 371 --- 37 & 1-- 37 - 1*2 % 7 ==0
+    let count = 0;
+    while (m.toString().length > 2) {
+      let str = m.toString();
+      let x = str.slice(0, -1);
+      let y = str.slice(-1);
+      m = x - 2 * y;
+      count++;
+    }
+    console.log( [m, count]);
+  }
+
+  function reverse(m){
+    let s = m.split(' ')
+    let reverse = ''
+    let newarr =[]
+    for(let i = 0;i<s.length;i++){
+        if(i %2 !=0){
+            
+            reverse = s[i].split('').reverse().join('')
+            newarr.push(reverse)
+            console.log(s)
+        }else{
+            newarr.push(s[i])
+        }
+        }
+        console.log(newarr.join(' '))
+  }
+  reverse('one two three four')
