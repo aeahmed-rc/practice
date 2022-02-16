@@ -1,32 +1,25 @@
 console.log("hello");
 /* working with regex */
 
-function divisors(integer) {
-    // input number
-    // get all numbers that are divide by this and become zero remainder
-    // return the value in an array
-    // if the integer is only divisible by itself then its a prime
-    //loop should end at values == to or less then the integer
-    
-    let arr = []
-    let n = []
-    for(let i = 2;i<=integer;i++){
-      if(integer % i ==0 ){
-        arr.push(i)
-    
+// calcualte slope
 
-      }else{
-       continue
-      }
-      
+function getSlope(p1, p2) {
+    // Return the slope of the line through p1 and p2
+    // slope is y2-y1/x2-x1
+    // ex: [1,1] [2,2]
+    //      x1,y1 x2,y2
+    // if p1 == p2 then return null
+    // if verticle aka if rise/run = ex 2/0 if run is zero
+
+    let slope = (p2[1]-p1[1])/(p2[0]-p1[0])
+    if(p2[0] == p1[0] && p2[1] ==p1[1]){
+        return null
+    }else if(p2[0] == p1[0]){
+        return null
+    }else {
+        return slope
     }
-    if(arr.length >=2){
-        arr.pop()
-    }else{
-        arr = `${integer} is prime`
-    }
-  return arr
-  };
-  divisors(13)
+}
+  getSlope([1,3],[2,1])
 
 
