@@ -48,34 +48,34 @@ function digitize(n) {
            return arr.map(Number)
        }
   
-       var paintLetterboxes = function(start, end) {
-        let obj ={}
-        let arry =[]
-        let num = []
-        let count =0
-      for(let i = start;i<=end;i++){
-          num=i.toString().split('').map(Number)
-        // console.log(num.length)
-        for(let j = 0;j<=num.length;j++){
-           console.log(num)
-            //num 1,2,5
-            let t = num[j] //ex t =1 
-           
-            if(arry[t] >=1){
-                arry[t]++
-            }else{
-                arry[t] = 1
-            }
-            
-            // arry[num[j]]++
-              
+       function paintLetterboxes(start, end) {
+        const frequencies = new Array(10).fill(0);
+        for(let number=start; number<=end; number++) {
+          number.toString().split('').forEach(x => frequencies[x]++);
+        }
+        return frequencies;
       }
-      
-  }
-      console.log(arry)
-   
+
+      function duplicateElements(m, n) {
+      console.log(m,n)
+        var bool = false
+      if(m.length ==0 || n.length == 0 ){
+         
+        bool = false
       }
-   
-      paintLetterboxes(125,127)
+     for(let i =0;i<m.length;i++){
+         let index = n.indexOf(m[i])
+         console.log(index)
+         if(index>-1){
+             bool = true
+             break
+         }else{
+             bool = false
+         }
+     }
+     console.log(bool)
+    }
+    duplicateElements([2,1,3,4,5],[6, 1, 7, 8, 9])
+
 
 
