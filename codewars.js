@@ -47,5 +47,35 @@ function digitize(n) {
            }
            return arr.map(Number)
        }
-    per(6)
+  
+       var paintLetterboxes = function(start, end) {
+        let obj ={}
+        let arry =[]
+        let num = []
+        let count =0
+      for(let i = start;i<=end;i++){
+          num=i.toString().split('').map(Number)
+        // console.log(num.length)
+        for(let j = 0;j<=num.length;j++){
+           console.log(num)
+            //num 1,2,5
+            let t = num[j] //ex t =1 
+           
+            if(arry[t] >=1){
+                arry[t]++
+            }else{
+                arry[t] = 1
+            }
+            
+            // arry[num[j]]++
+              
+      }
+      
+  }
+      console.log(arry)
+   
+      }
+   
+      paintLetterboxes(125,127)
+
 
