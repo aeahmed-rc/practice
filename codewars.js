@@ -75,7 +75,64 @@ function digitize(n) {
      }
      console.log(bool)
     }
-    duplicateElements([2,1,3,4,5],[6, 1, 7, 8, 9])
+
+    function isVeryEvenNumber(n) {
+        // keep looping and adding value until it is a single value
+        let sum =0
+        num = n.toString();
+       
+   
+      if(num.split('').length ==1 && num % 2!=0){
+          console.log('false')
+        return false
+      }
+        while(num >9){
+            num = num.split('').map(Number).reduce((a, b) => a + b).toString();
+            sum = num
+          
+            
+        }
+        if(sum % 2 ==0){
+            console.log('true')
+            return true
+        }else {
+            console.log('false')
+            return false 
+        }
+        
+        
+      }
+      function pr(n){
+          num = n
+          while(num>9){
+              num = num.toString().split('').reduce((a,b) => +a + +b)// way to split and add digits over and over
+            console.log(num)
+          }
+       
+      }
+
+      /* An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. 
+      Ignore letter case. */
+      function isIsogram(str){
+          // use set that stores all non duplicates 
+          // if the length of the str isnt same as the set size then that means there were duplicates
+        let s = str.toLowerCase()
+        let st = new Set(s)
+        console.log(st)
+        console.log( s.length )
+       }
+      
+       function isIsogr(str){
+        var i, j;
+        str = str.toLowerCase();
+        for(i = 0; i < str.length; ++i)
+          for(j = i + 1; j < str.length; ++j)
+            if(str[i] === str[j])
+              console.log(i ,str[j]);
+        console.log(i ,str[j]);
+      }
+      isIsogr('aba')
+     
 
 
 
