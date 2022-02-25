@@ -131,8 +131,55 @@ function digitize(n) {
               console.log(i ,str[j]);
         console.log(i ,str[j]);
       }
-      isIsogr('aba')
-     
+      function isVeryEvenNumb(n) {
+        // keep looping and adding value until it is a single value
+       let num = n
+       
+   
+      if(num<10 && num % 2==0){
+          console.log('true')
+        return true
+      }else if(num>10) {
+        num = num.toString().split('').map(Number).reduce((a, b) => a + b).toString();
+        isVeryEvenNumb(num)
+      }else{
+        console.log(num % 2 == 0 ? true : false)
+        
+      }
+       
+        
+      }     
+      function calc(x){
+        let spl = x.split('')
+        let value =''
+        for(let i =0;i<spl.length;i++){
+            value += spl[i].charCodeAt(0)
+        }
+        let arr = value.toString().split('').map(Number);
+        let newarr = value.toString().split('').map(Number)
+        console.log(newarr)
+        for(let j = 0;j<arr.length;j++){
+            if(arr[j] == 7){
+                    arr[j] = 1
+                  }else{
+                      continue
+                  }
+        }
+        console.log(arr,newarr)
+        let sumone = arr.reduce(
+            (a, b) => a + b,
+            0
+          );
+        let sumtwo = newarr.reduce((a,b)=> a+b,0)
+          console.log(sumone,sumtwo)
+        let total =sumtwo-sumone
+      
+          
+      
+  
+        console.log(total)
+        }
+        calc('ABC')
 
 
 
