@@ -191,5 +191,12 @@ function digitize(n) {
                return count;
            }
 
+           function modifiedSum(a, n) {
+            let sum =0
+            let map1 = a.map(x =>x**n).reduce((b,c)=>b+c,0)
+            let map2 = a.reduce((b,c)=>b+c,0)
+           return map1-map2
+          }
+
 
 
