@@ -190,13 +190,24 @@ function digitize(n) {
                }
                return count;
            }
-
-           function modifiedSum(a, n) {
-            let sum =0
-            let map1 = a.map(x =>x**n).reduce((b,c)=>b+c,0)
-            let map2 = a.reduce((b,c)=>b+c,0)
-           return map1-map2
+           function getLargerNumbers(a, b) {
+            // two arrays compare each index with the other array
+            let newArray = []
+            for(let i =0;i<a.length;i++){
+              if(a[i]>=b[i]){
+                newArray.push(a[i])
+              }else{
+                newArray.push(b[i])
+              }
+            }
+            return newArray;
           }
+
+          function sum() {
+            var total =  Array.prototype.slice.call(arguments).reduce((a,b)=> a+b,0)
+            return total
+              // return the sum of all arguments given.
+            }
 
 
 
