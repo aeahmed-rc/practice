@@ -209,5 +209,21 @@ function digitize(n) {
               // return the sum of all arguments given.
             }
 
+            function dontGiveMeFive(start, end)
+            {
+              let arr=[]
+              for(let i = start;i<=end;i++){
+                let st = i.toString()
+                if(st.match(/[5]/g)){
+                  continue
+                }else{
+                  arr.push(i)
+                }
+                
+              }
+            
+              return arr.length;
+            }
+
 
 
