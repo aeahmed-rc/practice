@@ -227,3 +227,27 @@ function digitize(n) {
 
 
 
+            function leastLarger(a,i) {
+                // pull out the value at given i
+                // sort the rest of array and return first value bigger then the value at i
+               console.log(a,i)
+                let arr = [...a]
+                let value = arr[i]
+                let newarr = a.sort(function(a, b) {
+                return a - b;
+              });
+                
+                
+               let index = newarr.indexOf(value) 
+               for(let i = index ; i<newarr.length;i++){
+                 if(newarr[i]>value){
+                   console.log(arr.indexOf(newarr[i]))
+                   return arr.indexOf(newarr[i])
+                 }else{
+                   continue 
+                 }
+               
+               }
+                  return -1
+               
+              }
