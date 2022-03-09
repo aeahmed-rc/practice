@@ -251,3 +251,21 @@ function digitize(n) {
                   return -1
                
               }
+
+
+              function leastLarger(a, i) {
+                const targetVal = a[i]
+                const largerVals = a.filter(num => num > targetVal)
+                console.log(largerVals)
+                const leastLargeVal = Math.min(...largerVals)
+                console.log(leastLargeVal)
+                return a.findIndex(num => num === leastLargeVal)
+            }
+            function battle(x, y){
+                const abc = z => z.codePointAt()
+                const first = [...x].map((el)=> abc(el) < 91 ? abc(el) - 64 : (abc(el) - 96)/2 ).reduce((a, b)=> a + b, 0) 
+                const second = [...y].map((el)=> abc(el) < 91 ? abc(el) - 64 : (abc(el) - 96)/2 ).reduce((a, b)=> a + b, 0)
+                return first > second ? x : first < second ? y : 'Tie!' 
+              }
+
+              
