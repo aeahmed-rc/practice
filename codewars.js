@@ -268,4 +268,26 @@ function digitize(n) {
                 return first > second ? x : first < second ? y : 'Tie!' 
               }
 
-              
+
+              function smaller(nums) {
+                // look at each value in the nums array
+                // count how many numbers to the right of it are smaller
+                //if the numbers is larger then current index increase count by 1
+                //push the count to the current index
+                let count = 0
+                let arr = []
+               for(let i = 0;i<nums.length;i++){
+                 for(let j = i+1;j<nums.length;j++){
+                   if(nums[j]<nums[i]){
+                     count++
+                   }else{
+                     continue
+                   }
+                 }
+                 arr.push(count)
+                 count = 0
+               }
+                return arr
+              }
+
+
