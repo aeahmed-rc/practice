@@ -290,4 +290,22 @@ function digitize(n) {
                 return arr
               }
 
-
+              function compose(s1, s2) {
+                // your code
+              
+              // from s1 its [0] 1 char [1] 2char, [2] 3 char so from s1 every line char amoutn goes up
+              //from sw start at the end at take all charac then 1 less then previous, and then 2 less the previous,last line only first char of first line s2
+              let s1Split = s1.split(/\r?\n/)
+              let s2Split = s2.split(/\r?\n/)
+              let strng =''
+            
+              for (let i = 0;i<s1Split.length;i++){
+                strng+=s1Split[i].slice(0,i+1) + s2Split[s2Split.length-i-1].slice(0,s2Split.length-i)
+                if(i<s1Split.length-1){
+                  strng+= `\n`
+                }
+              }
+             return strng
+            
+              
+            }
