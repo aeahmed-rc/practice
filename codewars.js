@@ -320,3 +320,25 @@ function digitize(n) {
                 return count.match(re).length;  
               }
               //d was an integer that we needed to find all instances of from 0 to n^2
+
+              function tetration(x,y){
+                // we want to take x and raise that value to itself y times
+                //y is 
+              
+                let arr = 1
+                for(let i = 0;i<y;i++){
+                 arr = x**arr
+              
+                }
+                return arr
+              
+              
+              }
+
+              function center (strng, width, fill = ' ') {
+                return strng.length > width
+                  ? strng
+                  : strng
+                    .padStart(Math.ceil((width + strng.length) / 2), fill)
+                    .padEnd(width, fill);
+              }
