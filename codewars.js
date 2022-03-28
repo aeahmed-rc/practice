@@ -342,25 +342,33 @@ function digitize(n) {
                     .padStart(Math.ceil((width + strng.length) / 2), fill)
                     .padEnd(width, fill);
               }
-              import React, { useState } from 'react';
+        
 
-              const colorNames = ['Aquamarine', 'BlueViolet', 'Chartreuse', 'CornflowerBlue', 'Thistle', 'SpringGreen', 'SaddleBrown', 'PapayaWhip', 'MistyRose'];
+              function makeValley(arr) {
+                // input array 
+                // retunr arry with left side descending, right side ascending
+                // re sort array from ascending to descednding then create new array pulling values from 
+                //orignal array 
+                // make two arrays push values from arr to arr1 and arr2 
+                
+                let Larr = []
+                let Rarr =[]
+                console.log(Larr)
+                
+                arr.sort(function(a, b) {
+                return b- a;
+              });
+                for(let i=0;i<arr.length;i++){
+                  if(i %2 ==0){
+                    Larr.push(arr[i])
+                  }else{
+                    Rarr.unshift(arr[i])
+                  }
+                 
+                }
+                 return Larr.concat(Rarr)
+                
+                
               
-              export default function ColorPicker() {
-                const [color, setColor] = useState("Yellow");
-              
-               const divStyle = {backgroundColor: color};
-              
-                return (
-                  <div style={divStyle}>
-                    <p>Selected color: {color}</p>
-                    {colorNames.map((colorName)=>(
-                      <button 
-                        onClick={() => setColor(colorName)} 
-                        key={colorName}>
-                              {colorName}
-                        </button>
-                    ))}
-                  </div>
-                );
+                  // Your code
               }
