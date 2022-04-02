@@ -372,3 +372,21 @@ function digitize(n) {
               
                   // Your code
               }
+
+
+
+              function mxdiflg(a1, a2) {
+                // loop through each array
+                // take length of each of the array 1 string and subtract from each of the array2
+                // push value to new array then get max value 
+                // the way the loop works is first we do a1[0],a2[0],a1[0],a2[1]
+                //second array loop goes thrpugh all values first then comes back and increases index of first array
+                let arr =[]
+              for(let i =0;i<a1.length;i++){
+                for(let j =0;j<a2.length;j++){
+                 arr.push(Math.abs(a1[i].length-a2[j].length))
+                }
+              }
+               return arr.length>0?Math.max(...arr):-1
+                 
+              }
