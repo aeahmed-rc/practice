@@ -355,14 +355,14 @@ function digitize(n) {
                 let Rarr =[]
                 console.log(Larr)
                 
-                arr.sort(function(a, b) {
+                const something= arr.sort(function(a, b) {
                 return b- a;
               });
-                for(let i=0;i<arr.length;i++){
+                for(let i=0;i<something.length;i++){
                   if(i %2 ==0){
-                    Larr.push(arr[i])
+                    Larr.push(something[i])
                   }else{
-                    Rarr.unshift(arr[i])
+                    Rarr.unshift(something[i])
                   }
                  
                 }
@@ -390,3 +390,36 @@ function digitize(n) {
                return arr.length>0?Math.max(...arr):-1
                  
               }
+
+
+
+              function convert(number){
+                // split value at every even index
+                // go through each array i via map and get the ASCII letter
+                //get the array join and return
+                // ...Convert integers given as string into ASCII uppercase letters...
+                
+              
+              let arr =number.match(number.length  % 2 ? /^\d|\d{2}/g : /\d{2}/g).map(String)
+              // this code splits number into two digits, ex: 6565 = ['65','65']
+            
+              let newarr = arr.map(el=>String.fromCharCode(el))
+              return newarr.join('')
+
+              OR try this
+              String.fromCharCode(...number.match(/../g))
+              
+               
+                
+                
+              }
+
+              function solution(str, ending){
+                if (typeof(str) != "string" || typeof(ending) != "string")
+                  throw "wrong type";
+                if (ending.length>str.length)
+                  return false;
+                return str.substr(str.length-ending.length, ending.length) == ending;
+              }
+
+           
