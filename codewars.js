@@ -430,3 +430,26 @@ function digitize(n) {
                 }
                 return result
               }
+
+              let output='1'
+              for(let i =2;i<=n;i++){
+                output+='\n1'+ '*'.repeat(i-1) +i
+              }
+              let output = '1'
+              for(let i =2 ;i<=n;i++){
+                output+='\n1'+'*'.repeat(i-1)+i
+              }
+
+              function vowelIndices(word){
+                let ar =[]
+                word=word.toLowerCase()
+                console.log(word)
+              let vowel= ['a', 'e', 'i', 'o', 'u','y']
+               word.split('').map((l,i) =>{
+                 if(vowel.includes(l)){
+                   ar.push(i+1)
+                 
+                 }
+               })
+              return ar
+              }
