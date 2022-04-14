@@ -464,3 +464,27 @@ function digitize(n) {
                 }
                 return sentence.trim();
               }
+
+              const xMarksTheSpot = (input) => {
+                if (input === undefined || input.length == 0) {
+               return []
+              }
+                let count =0
+                let arr = []
+                for(var i = 0; i < input[0].length; i++){
+                    for(var j = 0; j < input.length; j++){
+                        if(input[j][i] == 'x'){
+                          arr.push(j,i)
+                          count++
+                        }else{
+                          continue
+                        }
+                    }
+                                
+                }
+                
+                return count==1?arr:[]
+              }
+
+
+
