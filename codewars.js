@@ -486,5 +486,8 @@ function digitize(n) {
                 return count==1?arr:[]
               }
 
+              let stringMerge = (a, b, c) =>
+    a.slice(0, a.indexOf(c))
+  + b.slice(b.indexOf(c));
 
 
