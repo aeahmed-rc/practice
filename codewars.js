@@ -490,4 +490,17 @@ function digitize(n) {
     a.slice(0, a.indexOf(c))
   + b.slice(b.indexOf(c));
 
+  function comopl(arr1,sum){
+    let obj = {}
+    for(let i = 0;i<arr1.length;i++){
+        if(obj.hasOwnProperty(arr1[i])){
+            console.log(true)
+        }else{
+            obj[sum-arr1[i]]=true
+        }
+    }
+    console.log(obj)
+}
+comopl([1,4,5,7],8)
+
 
