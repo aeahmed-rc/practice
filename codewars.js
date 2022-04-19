@@ -501,6 +501,35 @@ function digitize(n) {
     }
     console.log(obj)
 }
-comopl([1,4,5,7],8)
+
+function nesSum(arr1,sum){
+  for(let i =0;i<arr1.length;i++){
+    for(let j =i+1;j<arr1.length;j++){
+      if(arr1[i] +arr1[j]==sum){
+        console.log(true)
+        console.log(i,j)
+      }
+    }
+  }
+}
+var twoSum = function(nums, target) {
+  //{index:value  }
+  
+
+  let comp ={}
+  let res =[]
+  for(let i=0;i<nums.length;i++){
+      if(comp.hasOwnProperty(nums[i])){
+          res.push(i)
+          res.push(nums.indexOf(target-nums[i]))
+      }
+      else{
+          comp[target-nums[i]] = comp[i]
+      }
+  }
+  
+ return res
+  
+};
 
 
