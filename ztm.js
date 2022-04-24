@@ -177,21 +177,57 @@ for(let i = 0;i<currentBucket.length;i++){
 // store array elements as keys in object and when the same value is seen value goes up by one first ele with 2 as value is returned
 
 function findRecu(arr){
-    let count =1
     let obj ={}
     for(let i =0;i<arr.length;i++){
-        if (obj.hasOwnProperty(arr[i])){
-            count++
-            obj[arr[i]]=count
-            if(obj[arr[i]]== 2){
-                return arr[i]
-                break
-            }
+        if(obj[arr[i]] == true){
+            return arr[i]
         }else{
-            obj[arr[i]]=count
+            obj[arr[i]] =true
         }
+        console.log(obj)
     }
     return undefined
 }
-let res =findRecu([1])
-console.log(res)
+// let res =findRecu([2,2,3,4,5])
+// console.log(res)
+/*
+given an array 
+1) Print the number that repeats the most number of times 
+2)  If more than one number matches - output the largest one.
+*/
+function repLar(arr){
+    //input [2,2,2,3,5,5,5]
+    //output 5 
+    //every time the key is in array increase the value at end return the ones with heighest value and get max
+    let map={}
+    let r =[]
+   
+    for(let i =0;i<arr.length;i++){
+
+        if(map[arr[i]]){
+            
+            map[arr[i]] = map[arr[i]]+1
+
+        }else{
+            map[arr[i]] = 1
+            
+        }
+
+    }
+    let k=0
+    let v =0
+    // { 2:3,3:1,5:3} output 5 because its key and value are heighest
+    for (const [key, value] of Object.entries(map)) {
+       if(value >= v){
+        v = value
+        // k =key
+           if(key>k){
+            k=key
+           }
+           
+          
+       }
+    }
+    console.log(k)
+}
+repLar([2,1,2,2,3,5,5,0,0,0,0,8,8])
