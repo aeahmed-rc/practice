@@ -230,4 +230,91 @@ function repLar(arr){
     }
     console.log(k)
 }
-repLar([2,1,2,2,3,5,5,0,0,0,0,8,8])
+
+//creating lined list
+// 10--->5-->30
+// this is what it will look like after adding values
+// let linkedList ={
+//     head:{
+//         value:10,
+//         next:{
+//             value:5,
+//             next:{
+//                 value:30,
+//                 next:null
+//             }
+//         }
+//     }
+// }
+class Node{
+    constructor(value){
+        this.value=value
+        this.next=null
+    }
+}
+class Linkedlist{
+    constructor(value){
+        this.head={
+            value:value,
+            next:null
+        }
+        this.tail=this.head
+        this.length=1
+    }
+    append(value){
+   const newNode =new Node(value)
+   this.tail.next=newNode
+   this.tail =newNode
+    this.length++
+     
+}
+
+    prepend(value){
+        //add where the head is 
+    const newNode = new Node(value)
+    newNode.next = this.head
+    this.head =newNode
+    this.length++
+    console.log(newNode.next)
+    }
+    printList(){
+        let arr = []
+        let currentNode = this.head
+        while(currentNode!=null){
+            arr.push(currentNode.value)
+            currentNode = currentNode.next
+        }
+        console.log(arr)
+    }
+    insert(index,value){
+        console.log(index,value)
+        if (index === 0) {
+            this.prepend(value);
+            return this.printList();
+          }
+          const newNode = new Node(value)
+          const leader = this.traversetoIndex(index-1)// find the point before where we will insert
+          const holdingPointer = leader.next // holds orignal values so we dont lose them
+          leader.next=newNode// adds the new value right next to leader
+          newNode.next = holdingPointer
+          this.length++
+          return this.printList()
+    }
+    traversetoIndex(index){
+        //to find the leader go to one before the index wanted 
+        let counter =0
+        let currentNode = this.head
+        while(counter!=index){
+            currentNode=currentNode.next
+            counter++
+        }
+        return currentNode
+    }
+}
+const myLinkedList = new Linkedlist(10)
+myLinkedList.append(5)
+myLinkedList.append(18)
+myLinkedList.prepend(1)
+myLinkedList.insert(2,12)
+// myLinkedList.printList()
+
