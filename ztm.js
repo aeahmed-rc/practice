@@ -261,21 +261,31 @@ class Linkedlist{
         this.tail=this.head
         this.length=1
     }
-    append(value){
-   const newNode =new Node(value)
-   this.tail.next=newNode
-   this.tail =newNode
-    this.length++
+    append(values){
+        if(Array.isArray(values)){
+           for(let i=0;i<values.length;i++){
+            const newNode =new Node(values[i])
+            this.tail.next=newNode
+            this.tail =newNode
+             this.length++
+           }
+
+        }else{
+            const newNode =new Node(values)
+            this.tail.next=newNode
+            this.tail =newNode
+             this.length++ 
+        }
+   
      
 }
-
     prepend(value){
         //add where the head is 
     const newNode = new Node(value)
     newNode.next = this.head
     this.head =newNode
     this.length++
-    console.log(newNode.next)
+    // console.log(newNode.next)
     }
     printList(){
         let arr = []
@@ -284,7 +294,7 @@ class Linkedlist{
             arr.push(currentNode.value)
             currentNode = currentNode.next
         }
-        console.log(arr)
+     console.log(arr)
     }
     insert(index,value){
         console.log(index,value)
@@ -300,6 +310,15 @@ class Linkedlist{
           this.length++
           return this.printList()
     }
+    delete(index){
+
+        const leader =this.traversetoIndex(index-1)
+        const nodeToBeDeleted = this.traversetoIndex(index+1)
+
+        leader.next = nodeToBeDeleted
+        this.length--
+        return this.printList()
+    }
     traversetoIndex(index){
         //to find the leader go to one before the index wanted 
         let counter =0
@@ -310,11 +329,13 @@ class Linkedlist{
         }
         return currentNode
     }
+
 }
 const myLinkedList = new Linkedlist(10)
 myLinkedList.append(5)
-myLinkedList.append(18)
+myLinkedList.append([18,4])
 myLinkedList.prepend(1)
 myLinkedList.insert(2,12)
+myLinkedList.delete(2)
 // myLinkedList.printList()
 
