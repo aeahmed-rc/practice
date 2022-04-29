@@ -406,7 +406,7 @@ function digitize(n) {
               let newarr = arr.map(el=>String.fromCharCode(el))
               return newarr.join('')
 
-              OR try this
+              //OR try this
               String.fromCharCode(...number.match(/../g))
               
                
@@ -431,15 +431,11 @@ function digitize(n) {
                 return result
               }
 
-              let output='1'
-              for(let i =2;i<=n;i++){
-                output+='\n1'+ '*'.repeat(i-1) +i
-              }
-              let output = '1'
-              for(let i =2 ;i<=n;i++){
-                output+='\n1'+'*'.repeat(i-1)+i
-              }
-
+              // let output='1'
+              // for(let i =2;i<=n;i++){
+              //   output+='\n1'+ '*'.repeat(i-1) +i
+              // }
+             
               function vowelIndices(word){
                 let ar =[]
                 word=word.toLowerCase()
@@ -546,3 +542,99 @@ var maxSubArray = function(nums) {
   return max;
 };
 
+// function takes in the array loops through it and returns last even number left
+// we want to take the index 1,3,5,7,etcc so i is every two
+function lastStanding(n){
+  // n is the lengthof the array required
+console.log('h')
+  let arr =[] 
+  //first need the array with the values in it 
+  for(let i =1;i<=n;i++){
+    arr.push(i)
+    console.log(arr)
+  }
+// while the array is still greater then 1 then we want to still take the values out
+console.log(arr)
+while(arr.length>1){
+  let temp =[]
+  for(let j=1;j<arr.length;j+=2){
+    temp.push(arr[j])
+  }
+  arr=temp.reverse()// we want after every round of loop to reverse and do the process from the other side
+}
+console.log(arr)
+return arr
+}
+
+
+
+function direction(facing, turn){
+  let compass = ['N','NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
+  let index = compass.indexOf(facing)+1
+  let steps = turn/45
+    if(steps <0){
+    compass.reverse()
+      steps=Math.abs(steps)
+  }
+  let temp=[]
+  let counter =0
+  let loops = compass.length
+while(counter !=steps){
+  
+  for(let i =index;i<loops;i++){
+    counter++
+    if(counter ==steps ){
+      temp.push(compass[i])
+    }
+  }
+  loops = steps-counter
+  index =0
+}
+  counter =0
+console.log(temp.join())
+  return temp.join()
+
+  // your code here
+}
+
+
+function red(){
+  const students =['a','n','c']
+  let arr =[]
+  let stu = students.forEach(
+    function(t,i){
+      arr.push(`${i+1}:${t}`)
+    })
+   
+  console.log(arr)
+}
+function destruct(){
+  let ar = ['a','b','a']
+  const ind = ar.indexOf('a')
+  // let newarr = ar.map(([a,b,c])=>a>b?'no':c)
+  console.log(ind)
+}
+
+function solve(arr){  
+  const alp = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+  'M', 'N', 'O', 'P', 'Q', 'R',  'S', 'T', 'U', 'V', 'W', 'X',
+  'Y', 'Z' ]
+  let numbersOccupy = []
+  let count =0
+  arr.forEach(function(x){
+    let newArray = x.split('')
+   for(let i =0;i<newArray.length;i++){
+     if(newArray[i].toUpperCase()===alp[i]){
+       count++
+     }else{
+       continue
+     }
+     
+   }
+    numbersOccupy.push(count)
+    count=0
+  })
+  console.log(numbersOccupy)
+  return numbersOccupy
+//code
+};
