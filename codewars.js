@@ -638,3 +638,16 @@ function solve(arr){
   return numbersOccupy
 //code
 };
+
+function bingo(a) {
+  // giving us an array
+  // each number corresponds to alpahbet in the same index 
+  // if the word bingo is in their return WIN
+  // your winning code here
+  
+const alphabet = ['',"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  const win = ['B','I','N','G','O']
+let res= a.map(x=>alphabet[x])
+let an = win.every(v=>res.includes(v))
+return an ? 'WIN':'LOSE'
+}
