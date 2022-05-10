@@ -651,3 +651,40 @@ let res= a.map(x=>alphabet[x])
 let an = win.every(v=>res.includes(v))
 return an ? 'WIN':'LOSE'
 }
+
+function solution(nums){
+  
+  // go through array 
+  // if one value is bigger then other then it should go after that value 
+  // keep evaluating the value with the rest and if its higher then put it in the spot after
+  //
+  console.log(nums)
+  let count = 0
+  let sor = []
+  if(nums==null||nums.length==0){
+    return []
+  }
+  let len = nums.length
+  while(count<len){
+    
+    let max = nums.splice(nums.indexOf(Math.max(...nums)),1)
+    console.log(...max)
+    sor.unshift(...max)
+ 
+    count++
+  }
+ return sor
+
+}
+
+
+// function to elimante values that show up more then n
+
+function deleteNth(arr,x) {
+  var cache = {};
+  return arr.filter(function(n) {
+    cache[n] = (cache[n]||0) + 1;
+    console.log(cache[n],n)
+    return cache[n] <= x;
+  });
+}
