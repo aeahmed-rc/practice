@@ -688,3 +688,26 @@ function deleteNth(arr,x) {
     return cache[n] <= x;
   });
 }
+
+function lastIndexOf(head, value) {
+  let currentNode = head
+//   console.log(currentNode)
+  let arr =[]
+  let count = 0
+  while(currentNode !=null){
+//       console.log(currentNode.data)
+    if(currentNode.data === value){
+      console.log(currentNode.data)
+     arr.push(count)
+    }
+    currentNode =currentNode.next
+  count++
+}
+
+if(arr.length<1){
+    return -1;
+}
+    console.log(arr[arr.length-1])
+  return arr[arr.length-1]
+
+}
