@@ -711,3 +711,28 @@ if(arr.length<1){
   return arr[arr.length-1]
 
 }
+function incrementer(nums) { 
+  // go through array values add each value to its position
+  // if the new val after suming is 2 digits only push second digit 
+  // push the value to new array
+  // sum all the values 
+  // code goes here
+  let newArr = []
+  
+  for(let i =0;i<nums.length;i++){
+    let val = i+1+nums[i]
+    if(val>9){
+      let str=val.toString()
+      let newval=str[str.length-1]
+      newval=Number(newval)
+//       console.log(typeof(Number(val)))
+      newArr.push(newval)
+      console.log(newArr)
+    }
+   else{
+       newArr.push(val)
+   }
+  
+  }
+  return newArr
+}
