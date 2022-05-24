@@ -736,3 +736,34 @@ function incrementer(nums) {
   }
   return newArr
 }
+
+function squareIt(int) {
+  // get length of digit convert to str
+  // find sqr root of digits length of %2 ==0 then its perfect 
+  // if perfect then every sqrt add break if i is divisbile by sqrt add break at the int
+  let str = int.toString()
+  let sqrt = Math.sqrt(str.length)
+  let an = ''
+  if(str.length %sqrt==0){
+
+    for(let i=0;i<str.length;i++){
+      if(i % sqrt ==0){
+        an+=str.slice(i,i+sqrt)+'\n'
+
+      }
+    }
+
+  }else{
+    an = "Not a perfect square!"
+  }
+  console.log(an.trim())
+  return an.trim('\n')
+	// return 'Not a perfect square!';
+
+  function encode(str, num) {
+    var key = num.toString();
+    return str.split('').map(function(char, i) {
+      return char.charCodeAt(0) - 96 + +key[i % key.length];
+    });
+  }
+}
