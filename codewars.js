@@ -774,3 +774,9 @@ function minSum(arr) {
   while(arr.length)s+=arr.pop()*arr.shift()
   return s
 }
+
+missingNo =(n)=> {
+  for(i=0;i<=100;i++){
+      if(!n.includes(i)){
+          return i
+      }}}
