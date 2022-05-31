@@ -780,3 +780,33 @@ missingNo =(n)=> {
       if(!n.includes(i)){
           return i
       }}}
+
+
+      const max_sub_array_of_size_k = function(k, arr) {
+        // TODO: Write your code here
+      
+        // get subarray from 0 to 3, 1 to 4 this will keep giving us subarray of length of k
+        
+        let p =0
+        // ex arr = [1,2,3,4]
+        // subarray = [1,2,3] 0,3
+        //subarray = [2,3,4] 1,4
+        console.log(arr)
+        let sub =[]
+        let arry =[]
+        let sum = 0
+      for(let i =0;i<arr.length;i++){
+           sub = arr.slice(i,k+i)
+          
+           if(sub.length ==k){
+             for(let j =0;j<sub.length;j++){
+               
+               sum+=sub[j]
+               arry.push(sum)
+             }
+             sum =0
+           }
+          console.log(sum)
+        }
+        console.log(Math.max(...arry))
+        return Math.max(...arry)
