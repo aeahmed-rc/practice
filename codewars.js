@@ -861,3 +861,41 @@ missingNo =(n)=> {
       
         return maxLength;
       }
+
+      //Given a string, find the length of the longest substring in it with no more than K distinct characters.
+
+      function find_distinct(str,k){
+        // given a string fnd longest substring with only ex: 2 different characters
+        //ex: araaci
+        // araa = 2 distinct characters and length = 4
+        //araac would not work because 3 distinct characters
+        // loop through entire string checking 
+        //araa,raa,aac,aci etc move down the string until find k exceeds amount
+
+        let windowStart =0
+        let hash= {}
+        let maxLength=0
+
+        for(let windowEnd=0;windowEnd<str.length;windowEnd++){
+          let rightChar = str[windowEnd]
+          if(rightChar in hash){
+            hash[rightChar]+=1
+          }else{
+            hash[rightChar]=1
+          }
+          console.log(hash)
+          while(Object.keys(hash).length>k){
+            let leftChar = str[windowStart]
+            hash[leftChar]-=1
+            if(hash[leftChar]==0){
+              delete hash[leftChar]
+            }
+            windowStart+=1
+          }
+          maxLength = Math.max(maxLength,windowEnd-windowStart+1)
+        }
+
+        console.log(maxLength)
+        console.log(hash)
+      }
+      find_distinct('araaci',2)

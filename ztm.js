@@ -246,96 +246,203 @@ function repLar(arr){
 //         }
 //     }
 // }
-class Node{
-    constructor(value){
-        this.value=value
-        this.next=null
-    }
-}
-class Linkedlist{
-    constructor(value){
-        this.head={
-            value:value,
-            next:null
-        }
-        this.tail=this.head
-        this.length=1
-    }
-    append(values){
-        if(Array.isArray(values)){
-           for(let i=0;i<values.length;i++){
-            const newNode =new Node(values[i])
-            this.tail.next=newNode
-            this.tail =newNode
-             this.length++
-           }
+// class Node{
+//     constructor(value){
+//         this.value=value
+//         this.next=null
+//         this.prev=null
+//     }
+// }
+// class Linkedlist{
+//     constructor(value){
+//         this.head={
+//             value:value,
+//             next:null,
+//             prev:null
+//         }
+//         this.tail=this.head
+//         this.length=1
+//     }
+//     append(values){
+//         if(Array.isArray(values)){
+//            for(let i=0;i<values.length;i++){
+//             const newNode =new Node(values[i])
+//             newNode.prev = this.tail
+//             this.tail.next=newNode
+//             this.tail =newNode
+//              this.length++
+//            }
 
-        }else{
-            const newNode =new Node(values)
-            this.tail.next=newNode
-            this.tail =newNode
-             this.length++ 
-        }
+//         }else{
+//             const newNode =new Node(values)
+//             newNode.prev = this.tail
+//             this.tail.next=newNode
+//             this.tail =newNode
+//              this.length++ 
+//         }
    
      
-}
-    prepend(value){
-        //add where the head is 
-    const newNode = new Node(value)
-    newNode.next = this.head
-    this.head =newNode
-    this.length++
-    // console.log(newNode.next)
-    }
-    printList(){
-        let arr = []
-        let currentNode = this.head
-        while(currentNode!=null){
-            arr.push(currentNode.value)
-            currentNode = currentNode.next
-        }
-     console.log(arr)
-    }
-    insert(index,value){
-        console.log(index,value)
-        if (index === 0) {
-            this.prepend(value);
-            return this.printList();
-          }
-          const newNode = new Node(value)
-          const leader = this.traversetoIndex(index-1)// find the point before where we will insert
-          const holdingPointer = leader.next // holds orignal values so we dont lose them
-          leader.next=newNode// adds the new value right next to leader
-          newNode.next = holdingPointer
-          this.length++
-          return this.printList()
-    }
-    delete(index){
+// }
+//     prepend(value){
+//         //add where the head is 
+//     const newNode = new Node(value)
+//     newNode.next = this.head
+//     this.head.prev =newNode
+//     this.head =newNode
+//     this.length++
+//     // console.log(newNode.next)
+//     }
+//     printList(){
+//         let arr = []
+//         let currentNode = this.head
+//         while(currentNode!=null){
+//             arr.push(currentNode.value)
+//             currentNode = currentNode.next
+//         }
+//      console.log(arr)
+//     }
+//     insert(index,value){
+//         console.log(index,value)
+//         if (index === 0) {
+//             this.prepend(value);
+//             return this.printList();
+//           }
+//           const newNode = new Node(value)
+//           const leader = this.traversetoIndex(index-1)// find the point before where we will insert
+//           const follower = leader.next // holds orignal values so we dont lose them
+//           leader.next=newNode// adds the new value right next to leader
+//           newNode.prev = leader
+//           newNode.next = follower
+//           follower.prev = newNode
+//           this.length++
+//           return this.printList()
+//     }
+//     delete(index){
 
-        const leader =this.traversetoIndex(index-1)
-        const nodeToBeDeleted = this.traversetoIndex(index+1)
+//         const leader =this.traversetoIndex(index-1)
+//         // const nodeToBeDeleted = this.traversetoIndex(index+1) one way to do it it
+//         const nodeAfterToBeDeleted = leader.next //gives us next node leader is before the node to be deleted
+//         const follower = nodeAfterToBeDeleted.next
+//         leader.next= follower
+//         follower.prev = leader
+//         this.length--
+//         console.log(this)
+//         return this.printList()
+//     }
+//     traversetoIndex(index){
+//         //to find the leader go to one before the index wanted 
+//         let counter =0
+//         let currentNode = this.head
+//         while(counter!=index){
+//             currentNode=currentNode.next
+//             counter++
+//         }
+//         return currentNode
+//     }
 
-        leader.next = nodeToBeDeleted
-        this.length--
-        return this.printList()
+// }
+// // const myLinkedList = new Linkedlist(10)
+// // myLinkedList.append(5)
+// // myLinkedList.append([18,4])
+// // myLinkedList.prepend(1)
+// // myLinkedList.insert(2,12)
+// // myLinkedList.delete(2)
+// // myLinkedList.printList()
+
+class LinkedList {
+    constructor(value) {
+        this.head = {
+            value: value,
+            next: null
+        };
+        this.tail = this.head;
+        this.length = 1;
     }
-    traversetoIndex(index){
-        //to find the leader go to one before the index wanted 
-        let counter =0
-        let currentNode = this.head
-        while(counter!=index){
-            currentNode=currentNode.next
-            counter++
-        }
-        return currentNode
+    append(value) {
+      const newNode = {
+        value: value,
+        next: null
+      }
+      console.log(newNode)
+      this.tail.next = newNode;
+      this.tail = newNode;
+      this.length++;
+      return this;
     }
-
-}
-const myLinkedList = new Linkedlist(10)
-myLinkedList.append(5)
-myLinkedList.append([18,4])
-myLinkedList.prepend(1)
-myLinkedList.insert(2,12)
-myLinkedList.delete(2)
-// myLinkedList.printList()
-
+    prepend(value) {
+      const newNode = {
+        value: value,
+        next: null
+      }
+      newNode.next = this.head;
+      this.head = newNode;
+      this.length++;
+      return this;
+    }
+    printList() {
+      const array = [];
+      let currentNode = this.head;
+      while(currentNode !== null){
+          array.push(currentNode.value)
+          currentNode = currentNode.next
+      }
+    console.log(array);
+    }
+    insert(index, value){
+      //Check for proper parameters;
+      if(index >= this.length) {
+        console.log('yes')
+        return this.append(value);
+      }
+      
+      const newNode = {
+        value: value,
+        next: null
+      }
+      const leader = this.traverseToIndex(index-1);
+      const holdingPointer = leader.next;
+      leader.next = newNode;
+      newNode.next = holdingPointer;
+      this.length++;
+      return this.printList();
+    }
+    traverseToIndex(index) {
+      //Check parameters
+      let counter = 0;
+      let currentNode = this.head;
+      while(counter !== index){
+        currentNode = currentNode.next;
+        counter++;
+      }
+      return currentNode;
+    }
+    remove(index) {
+      // Check Parameters      
+      const leader = this.traverseToIndex(index-1);
+      const unwantedNode = leader.next;
+      leader.next = unwantedNode.next;
+      this.length--;
+      return this.printList();
+    }
+    reverse() {
+        //Code Here
+        this.tail=this.head
+        // this.tail.next = this.head.next
+        // this.head.next=this.tail.next
+        this.head=this.tail
+        console.log(this)
+      return this.printList();
+    }
+  }
+  
+  let myLinkedList = new LinkedList(2);
+  myLinkedList.append(3)
+  myLinkedList.append(4)
+  myLinkedList.prepend(1)
+  myLinkedList.printList()
+  myLinkedList.insert(4, 5)
+//   myLinkedList.insert(20, 88)
+ 
+//   myLinkedList.remove(2)
+  myLinkedList.reverse()
+  myLinkedList.printList()

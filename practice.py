@@ -31,10 +31,9 @@ Using .sort() method, create a lambda function that sorts the list in descending
 # lp = Solution()
 # lp.longestPalindrome("babad")
 
-lst1=["Alaska", "Alabama", "Arizona", "Arkansas", "Colorado", "Montana", "Nevada"]
-#Type your answer here.
+lst=[99.3890,-3.5, 5, -0.7123, -9, -0.003]
+new_lst=list(map(lambda x:abs(x),lst))
 
-lst2=list(map(lambda a:a.count('a'),lst1))
+ans_1=map(lambda (x, z):x+z, new_lst)
 
-
-print(lst2)
+print(ans_1)
