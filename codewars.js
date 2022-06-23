@@ -887,7 +887,7 @@ missingNo =(n)=> {
           while(Object.keys(hash).length>k){
             let leftChar = str[windowStart]
             hash[leftChar]-=1
-            if(hash[leftChar]==0){
+            if(hash[leftChar]===0){
               delete hash[leftChar]
             }
             windowStart+=1
@@ -898,4 +898,57 @@ missingNo =(n)=> {
         console.log(maxLength)
         console.log(hash)
       }
-      find_distinct('araaci',2)
+
+      const fruits_into_baskets = function(fruits) {
+        let windowStart =0
+        let fruitBasket = {}
+        let maxlength =0
+        for(let windowEnd=0; windowEnd<fruits.length;windowEnd++){//loop through fruits array
+          let rightChar = fruits[windowEnd]
+          if(rightChar in fruitBasket){
+            fruitBasket[rightChar]+=1
+          }else{
+            fruitBasket[rightChar]=1
+          }
+          console.log('len',Object.keys(fruitBasket).length)
+          while(Object.keys(fruitBasket).length>2){// {a:1,B:1,C:1} len>2
+            let leftChar=fruits[windowStart]
+            // console.log(leftChar)
+            fruitBasket[leftChar]-=1
+            if(fruitBasket[leftChar]==0){
+              console.log(fruitBasket[leftChar])
+              delete fruitBasket[leftChar]
+            }
+            windowStart+=1
+          }
+          console.log(fruitBasket)
+          maxlength=Math.max(maxlength,windowEnd-windowStart+1)
+          console.log(maxlength)
+        }
+        // TODO: Write your code here
+        return maxlength;
+      };
+
+
+      
+      const non_repeat_substring = function(str) {
+        console.log(str)
+        let windowStart =0
+        let differentString={}
+        let maxLength =0
+        for(let windowEnd=0;windowEnd<str.length;windowEnd++){
+          let rightChar = str[windowEnd]
+          if(!(rightChar in differentString)){
+            differentString[rightChar]=1
+          }else{
+            console.log(differentString)
+            windowStart=windowEnd
+            
+          }
+        
+          maxLength=Math.max(maxLength,windowEnd-windowStart+1)
+          
+        }
+      
+        return maxLength
+      };
