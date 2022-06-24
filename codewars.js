@@ -930,7 +930,7 @@ missingNo =(n)=> {
       };
 
 
-      
+
       const non_repeat_substring = function(str) {
         console.log(str)
         let windowStart =0
@@ -951,4 +951,28 @@ missingNo =(n)=> {
         }
       
         return maxLength
+      };
+
+      //Given an array of positive numbers and a positive number ‘k,’ find the maximum sum of any contiguous subarray of size ‘k’.
+      const max_sub_array_of_size_k = function(k, arr) {
+        let windowStart =0,
+        maxSum=0,
+        sum=0,
+        counter=0
+      
+        for(let windowEnd=0;windowEnd<arr.length;windowEnd++){
+          sum+=arr[windowEnd]
+          console.log('sum',sum)
+          counter++
+          console.log('cout',counter)
+          while(counter>=k){
+            maxSum=Math.max(maxSum,sum)
+            console.log(maxSum)
+            sum=sum-arr[windowStart]
+            windowStart++
+            counter--
+          }
+        }
+        // TODO: Write your code here
+        return maxSum;
       };
