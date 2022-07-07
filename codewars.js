@@ -976,3 +976,19 @@ missingNo =(n)=> {
         // TODO: Write your code here
         return maxSum;
       };
+
+
+      function scrabbleScore(str){
+        // whatever letter is in the str get the value from the dict and sum it
+        let sum =0
+        let dict = $dict
+        str=str.toUpperCase().replace(/\s/g, '')
+        console.log(str)
+      for(let letters = 0;letters<str.length;letters++){
+        sum+=dict[str[letters]]
+          console.log(str[letters])
+        
+      }
+      return sum
+        // ...
+      }
