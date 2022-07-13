@@ -1011,3 +1011,22 @@ missingNo =(n)=> {
           }
           return nonstring-string
         }
+
+
+    //return the total number of smiling faces in the array
+function countSmileys(arr) {
+  let count =0
+  if(arr.length==0){
+    return count
+  }
+  let acceptedSmiles = [':D',':-D',':~D',':)',':-)',':~)',';-D',';D',';~D',';~)',';-)',';)']
+  console.log(arr)
+  for(let smiles =0;smiles<arr.length;smiles++){
+    if(acceptedSmiles.includes(arr[smiles])){
+      count++
+    }
+  }
+  console.log(count)
+  return count
+
+}
