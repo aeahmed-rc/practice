@@ -1040,3 +1040,44 @@ function findMissingLetter(array) {
   }
   throw new Error("Invalid input")
 }
+
+
+function twinPrime(n) {
+  console.log('n',n)
+//   n=10
+  // go through n and take out all prime numbers
+  // prime numbers are numbers that only can be divided by themselves
+  if(n<2){
+    console.log('less')
+    return 0
+  }
+let isPrime =true
+let arr =[]
+let isPrimearray=[]
+ for(let i = 2;i<=n+1;i++){
+   arr.push(i)
+ }
+  for(let j =0;j<arr.length;j++){
+//     console.log(j)
+    isPrime=true
+    for(let m=2;m<=j;m++){
+      if(arr[j]%m===0){
+        isPrime=false
+        break
+      }
+    }
+     if(isPrime==true){
+    isPrimearray.push(arr[j])
+  }
+    
+  }
+  console.log(isPrimearray)
+ let count =0
+ for(let i =0;i<isPrimearray.length;i++){
+   if(isPrimearray[i]+2==isPrimearray[i+1]){
+     count++
+   }
+ }
+ console.log(count)
+  return count
+}
