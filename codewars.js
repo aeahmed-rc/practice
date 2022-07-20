@@ -782,35 +782,35 @@ missingNo =(n)=> {
       }}}
 
 
-      const max_sub_array_of_size_k = function(k, arr) {
-        // TODO: Write your code here
+      // const max_sub_array_of_size_k = function(k, arr) {
+      //   // TODO: Write your code here
       
-        // get subarray from 0 to 3, 1 to 4 this will keep giving us subarray of length of k
+      //   // get subarray from 0 to 3, 1 to 4 this will keep giving us subarray of length of k
         
-        let p =0
-        // ex arr = [1,2,3,4]
-        // subarray = [1,2,3] 0,3
-        //subarray = [2,3,4] 1,4
-        console.log(arr)
-        let sub =[]
-        let arry =[]
-        let sum = 0
-      for(let i =0;i<arr.length;i++){
-           sub = arr.slice(i,k+i)
+      //   let p =0
+      //   // ex arr = [1,2,3,4]
+      //   // subarray = [1,2,3] 0,3
+      //   //subarray = [2,3,4] 1,4
+      //   console.log(arr)
+      //   let sub =[]
+      //   let arry =[]
+      //   let sum = 0
+      // for(let i =0;i<arr.length;i++){
+      //      sub = arr.slice(i,k+i)
           
-           if(sub.length ==k){
-             for(let j =0;j<sub.length;j++){
+      //      if(sub.length ==k){
+      //        for(let j =0;j<sub.length;j++){
                
-               sum+=sub[j]
-               arry.push(sum)
-             }
-             sum =0
-           }
-          console.log(sum)
-        }
-        console.log(Math.max(...arry))
-        return Math.max(...arry)
-      }
+      //          sum+=sub[j]
+      //          arry.push(sum)
+      //        }
+      //        sum =0
+      //      }
+      //     console.log(sum)
+      //   }
+      //   console.log(Math.max(...arry))
+      //   return Math.max(...arry)
+      // }
 
       function smallest_subarray_sum(s, arr) {
         let minLength = Infinity;
@@ -1080,4 +1080,51 @@ let isPrimearray=[]
  }
  console.log(count)
   return count
+}
+
+const isPrime = num => {
+  for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+    if (num % i === 0) return false;
+  return num > 1;
+};
+
+function twinPrime(n) {
+  let twinPrimeCount = 0;
+  for (let i = 1; i <= n - 1; i++) {
+    if (isPrime(i) && isPrime(i + 2)) twinPrimeCount++;
+  }
+  return twinPrimeCount;
+}
+
+function testing(){
+
+  let arr =Array.from({length: 5}, (v, i) => v);
+
+  console.log(arr)
+}
+
+function solution(string) {
+  let alreadySplit = false
+  const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  let leftString=''
+  let rightString=''
+ let currentIndex =0
+ let ind=[0]
+  
+  let arr = Array.from(string)
+  for(let i =0;i<string.length;i++){
+    let code = string.charCodeAt(i)
+    if(code <90 &&code>64){
+      ind.push(i)
+    }
+  
+  }
+  ind.push(string.length)
+  console.log(ind)
+  for(let i =0;i<ind.length-1;i++){
+    leftString+= string.slice(ind[i],ind[i+1])+' '
+    console.log(leftString)
+  }
+// console.log(leftString)
+  return leftString.trim()
 }
