@@ -1128,3 +1128,18 @@ function solution(string) {
 // console.log(leftString)
   return leftString.trim()
 }
+
+function solution(string) {
+  let arr =[]
+  string=string.split('')
+ for(let i =0;i<string.length;i++){
+   if(string[i]===string[i].toUpperCase()){
+     arr.push(' ')
+     arr.push(string[i])
+   }else{
+     arr.push(string[i])
+   }
+   
+ }
+   return arr.join('')
+ }
