@@ -1143,3 +1143,36 @@ function solution(string) {
  }
    return arr.join('')
  }
+
+
+ function likes(names) {
+  
+  let stri = 'likes this'
+
+  if(names.length==0){
+    return `no one ${stri}`
+  }
+let res =''
+let len = names.length
+
+switch (true){
+
+    case (len==1):
+    console.log('he')
+    res=`${names[0]} ${stri}`
+    console.log(res)
+    break;
+    case (len ==2):
+    res= `${names[0]} and ${names[1]} like this`
+    break;
+    case (len ==3):
+    res = `${names[0]}, ${names[1]} and ${names[2]} like this`
+    break;
+    case (len>3):
+    res = `${names[0]}, ${names[1]} and ${Math.floor(names.length-2)} others like this`
+    break;
+}
+ return res
+  // TODO
+}
+  
