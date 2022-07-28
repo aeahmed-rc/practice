@@ -1266,7 +1266,7 @@ function persistence(num) {
   // take the num split it multiply the digits 
   //store new multiplied in vairable
   // check if it still has len>1 then split and repeat process
-num =num.toString().split('').map(Number)
+num =num.toString()
 let count =0
 while(num.length>1){
   let product =1
@@ -1279,3 +1279,38 @@ while(num.length>1){
   return count
    //code me
 }
+
+function isValidWalk(walk) {
+  let opposites={
+    n:'s',
+    w:'e',
+    s:'n',
+    e:'w'
+  }
+  let dic={}
+  let numberOfDirections=0
+    let bool = false 
+  if(walk.length!=10){
+    return bool 
+  }console.log(walk)
+  for(let direction=0;direction<walk.length;direction++){
+    dic[walk[direction]]+=1
+    if( !dic[walk[direction]]>=1){
+      dic[walk[direction]]=1
+    }
+    
+  }
+    console.log(dic)
+    console.log(opposites)
+    for(var k in dic){
+      if(dic[k]==dic[opposites[k]]){
+        console.log(dic[k],dic[opposites[k]])
+        bool = true 
+      }else{
+        bool=false 
+      }
+    return bool
+    }
+  
+    //insert brilliant code here
+  }
