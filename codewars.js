@@ -1314,3 +1314,75 @@ function isValidWalk(walk) {
   
     //insert brilliant code here
   }
+
+
+  function isAValidMessage(message){
+    // split message into numbers and the words
+    //use number to verify if same as length, have boolen set to true but if one is not same lenght
+    //set bool to false and return
+    let number =0
+    let numbers=[]
+    let words=[]
+    let dict={}
+    let word=''
+  for(let i =0;i<message.length;i++){
+  
+    console.log(message[i])
+    if(message[i].match(/\d+/)&&message[i+1].match(/\d+/)){
+       
+         number=message[i]+message[i+1]
+  //        dict[number]=0
+  
+      
+  
+      console.log('number',number)
+  
+      word=''
+      i++
+  
+  }else if(message[i].match(/\d+/)){
+    console.log('elseif',message[i])
+    number=message[i]
+  //        dict[number]=0
+  
+        word=''
+  }
+    else{
+    word+=message[i]
+  
+    console.log('word',word)
+       dict[word]=number
+  }
+   
+  //   dict[word]=number
+  
+     console.log(dict)
+  }
+  
+  
+  
+  }
+
+  function findChildren(dancingBrigade) {
+    let sor = dancingBrigade.split('')
+    let m = sor.map(le=>le.toLowerCase()).sort()
+    let currentLetter=''
+    let arr=[]
+    console.log(m)
+    for(let i=0;i<m.length;i++){
+      console.log(currentLetter)
+      if(m[i]!=currentLetter.toLowerCase()&&m[i]!=currentLetter.toUpperCase()){
+        console.log(m[i])
+        currentLetter=m[i].toUpperCase()
+         console.log(currentLetter)
+        arr.push(currentLetter)
+        
+      }else{
+        currentLetter=m[i]
+        arr.push(m[i])
+        
+      }
+    }
+    console.log(arr.join(''));
+    return arr.join('')
+  }
