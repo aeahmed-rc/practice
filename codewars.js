@@ -1418,42 +1418,37 @@ return small-currentSmall
 
 
 
-// function printNumbers(n1,n2,k){
-//   let range=n1+(n2*k)
-//   let numbers=[]
-//   for(let n=n1;n<=range;n++){
-//     numbers.push(n)
-//   }
-//   return numbers
-// }
-// function digitsAndfactors(numbers,factors,digits){
 
-//   let values=numbers.map(number=>{ 
-//     factors.map(factor=> number % factor==0)
-    
-//   })
-// console.log(values)
-// }
 function findUs(n1, n2, k, factors, digits) {
-  //   let numbers=printNumbers(n1,n2,k)
-  //   let returnValues=digitsAndfactors(numbers,factors,digits)
-      let range=n1+(n2*k)
-    let numbers=[]
-    for(let n=n1;n<=range;n++){
-      let m=factors.map((factor,i)=>{
-        if(n % factors[i]==0 &&n%factors[i+1]==0){
-         let nDigits= n.toString().split('').map(Number)
-         
-          numbers.push(n)
-        }else{
-          return false
-        }
-      })
+
+  let range=n1+(n2*k)
+
+  let re=[]
+
+  let boo = 0
+  let numbers =[]
+  let factorsStart=0
+  let digitStart=0
+
+// [30,36,42,etcc] factors=[2,4] digitd=[2,6]
+
   
+for(let n=n1;n<=range;n++){
+  for(let j=0;j<factors.length;j++){
+    if(n % factors[j]==0 && n.toString().indexOf(digits[j])>-1 ){
+      boo++
+    }else{
+      boo--
     }
-  //   let m =factors.map((factor,i)=>numbers.filter(num=>{num % factors[i]==0 && num%factors[factors.length-1]==0}))
-    console.log(numbers)
-  //   console.log('find',numbers)
-      // your code here
-      return [];
   }
+  if(boo==factors.length){
+    re.push(n)
+    boo=0
+
+  }else{
+    boo=0
+  }
+}
+
+    return re;
+}
