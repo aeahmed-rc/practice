@@ -1386,3 +1386,74 @@ function isValidWalk(walk) {
     console.log(arr.join(''));
     return arr.join('')
   }
+
+
+  // return the number of small chocolates required to achieve 
+// the desired goal. Return -1 if the goal cannot be achieved 
+function makeChocolates(small, big, goal) {
+  let currentSmall=small
+  let currentBig=big
+  if(small*2+big*5>=goal){
+    while(goal>0){
+  if(goal % 5==0 && currentBig!=0){
+    goal-=5
+    currentBig--
+  }else if(currentSmall!=0 && goal>1){
+    goal-=2
+    currentSmall--
+  }else{
+    return -1
+  }
+}
+  }
+else{
+  return -1
+}
+  console.log(goal)
+  console.log(small-currentSmall)
+return small-currentSmall
+ 
+//   return -100;
+}
+
+
+
+// function printNumbers(n1,n2,k){
+//   let range=n1+(n2*k)
+//   let numbers=[]
+//   for(let n=n1;n<=range;n++){
+//     numbers.push(n)
+//   }
+//   return numbers
+// }
+// function digitsAndfactors(numbers,factors,digits){
+
+//   let values=numbers.map(number=>{ 
+//     factors.map(factor=> number % factor==0)
+    
+//   })
+// console.log(values)
+// }
+function findUs(n1, n2, k, factors, digits) {
+  //   let numbers=printNumbers(n1,n2,k)
+  //   let returnValues=digitsAndfactors(numbers,factors,digits)
+      let range=n1+(n2*k)
+    let numbers=[]
+    for(let n=n1;n<=range;n++){
+      let m=factors.map((factor,i)=>{
+        if(n % factors[i]==0 &&n%factors[i+1]==0){
+         let nDigits= n.toString().split('').map(Number)
+         
+          numbers.push(n)
+        }else{
+          return false
+        }
+      })
+  
+    }
+  //   let m =factors.map((factor,i)=>numbers.filter(num=>{num % factors[i]==0 && num%factors[factors.length-1]==0}))
+    console.log(numbers)
+  //   console.log('find',numbers)
+      // your code here
+      return [];
+  }
