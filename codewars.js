@@ -1460,3 +1460,22 @@ function sumDigNthTerm(initval, patternl, nthterm) {
   }
   return (sum.toString().split("")).reduce((a,b) => Number(a)+Number(b))
 }
+function amountOfPages(summary){
+  // p-summary = number of total digits the book has
+  //return how many digits it takes to get to the summary
+  // ex: summary = 25 so 1 to 17 is 25 digits 
+  // print values and count how mant digits until value reaches summary
+  // more then 9 the digits are split and count each one then return last value after summary is reached
+
+  let digits =0
+  for(let i=1;i<=summary;i++){
+    digits+=i.toString().length
+    if(digits===summary){
+      digits=i
+      break
+    }
+  }
+  console.log(digits)
+return digits
+  
+}
