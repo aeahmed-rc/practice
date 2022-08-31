@@ -1479,3 +1479,52 @@ function amountOfPages(summary){
 return digits
   
 }
+
+function uniqCount(xs) {
+  // if they are all unique take length and multiply until 1 from len
+  // if not unique just take the length
+  // permutation = length *length-1/number each letter shows up
+  console.log(xs)
+  let len=xs.length
+  let set = xs.toUpperCase().split('')
+//   let newSet = new Set(set)
+//   let bottom=len-newSet.size
+  let dict={}
+  let top=1
+  let bottom=1
+   while(len>0){
+     top*=len
+     len--
+   }
+for(let i=0;i<set.length;i++){
+  if(dict[set[i]]){
+    dict[set[i]]+=1
+  }else{
+    dict[set[i]]=1
+  }
+}
+  console.log(xs,dict)
+  for (const key in dict) {
+    while(dict[key]>1){
+bottom*=dict[key]
+dict[key]--
+    }
+  }
+  console.log(Math.floor(top/bottom))
+  let ans= Math.floor(top/bottom)
+  return BigInt(ans)
+}
+// let un=uniqCount("ABcDEFgHIJbaslidbailsbdilasbdkanmsdklhkbHSJKHVDASH")
+// console.log(un)
+const stringPermutations = str => {
+  if (str.length <= 2) return str.length === 2 ? [str, str[1] + str[0]] : [str];
+  return str
+    .split('')
+    .reduce(
+      (acc, letter, i) =>
+        acc.concat(stringPermutations(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)),
+      []
+    );
+};
+
+console.log(stringPermutations('abc'));
