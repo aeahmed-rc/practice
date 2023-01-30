@@ -1480,51 +1480,128 @@ return digits
   
 }
 
-function uniqCount(xs) {
+function uniqCounts(xs) {
   // if they are all unique take length and multiply until 1 from len
   // if not unique just take the length
   // permutation = length *length-1/number each letter shows up
   console.log(xs)
-  let len=xs.length
+  let len=BigInt(xs.length)
   let set = xs.toUpperCase().split('')
-//   let newSet = new Set(set)
-//   let bottom=len-newSet.size
+
   let dict={}
-  let top=1
-  let bottom=1
+  let top=1n
+  let bottom=1n
    while(len>0){
      top*=len
      len--
    }
 for(let i=0;i<set.length;i++){
-  if(dict[set[i]]){
-    dict[set[i]]+=1
-  }else{
-    dict[set[i]]=1
-  }
+  dict[set[i]]=dict[set[i]]?dict[set[i]]+=1n:1n
+
 }
+// set.forEach(s=>dict[s]=dict[s]?dict[s]+1n:1n)
   console.log(xs,dict)
-  for (const key in dict) {
-    while(dict[key]>1){
-bottom*=dict[key]
+  for (const key in dict) {// ex= {A:2n,B:3n}
+    while(dict[key]>1n){//2n>1
+bottom*=dict[key] // bottom =1n and A= 2n ,1n*=2n,bottom=2n A was 2n then 1n so 2n*=1n
 dict[key]--
-    }
+    }// goes to next key after while loop no longer is true
   }
-  console.log(Math.floor(top/bottom))
-  let ans= Math.floor(top/bottom)
-  return BigInt(ans)
+
+  let ans= top/bottom
+  return ans
 }
-// let un=uniqCount("ABcDEFgHIJbaslidbailsbdilasbdkanmsdklhkbHSJKHVDASH")
+// let un=uniqCounts("ABcDEFgHIJbaslidbailsbdilasbdkanmsdklhkbHSJKHVDASH")
 // console.log(un)
-const stringPermutations = str => {
-  if (str.length <= 2) return str.length === 2 ? [str, str[1] + str[0]] : [str];
-  return str
-    .split('')
-    .reduce(
-      (acc, letter, i) =>
-        acc.concat(stringPermutations(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)),
-      []
-    );
+
+
+
+function uniqCount(xs) {
+  const str = xs.toUpperCase().split('');
+  const size = BigInt(str.length);
+  const fact = x =>{ 
+    x<2n ? 1n : x * fact(x-1n);
+  }
+  console.log(fact)
+  let reps = {};
+  str.forEach(letter => reps[letter] = reps[letter] ? reps[letter] + 1n : 1n);
+
+  const perm = fact(size);
+  const dups = Object.values(reps).filter(r=>r>1n).map(r=>fact(r)).reduce((total, rep)=> total*rep, 1n);
+  // .map(r=>fact(r)) .reduce((total, rep)=> total*rep, 1n);
+  console.log(reps)
+  
+  console.log(perm)
+
+  
+  // return perm/dups;
+}
+
+
+//Binary tree search for target
+
+function binarySearch (node, target){
+  console.log('bin')
+  if(node.val==null){
+    return false
+  }
+  else if(node.value===target){//base case where we stop recurrsion
+    return true;
+  } else {
+   if(node.value>=target){
+      return binarySearch(node.left,target)
+    
+    }else if(node.value<target){
+      return binarySearch(node.right,target)
+     
+    }
+    
+  // still to come
+  }
+
+
+
+}
+// console.log(binarySearch([10,5,12,4,7,11,9],4))
+
+
+var moveZeroes = function(nums) {
+  let p1=0
+  let val=0
+  for(let p2=0;p2<nums.length;p2++){
+      if(nums[p2]!=0){
+           val=nums[p2]
+          nums[p2]=0
+          nums[p1]=val
+          p1++
+      }       
+}
+     
+  console.log(nums)
+  // return nums
 };
 
-console.log(stringPermutations('abc'));
+var reverseArrayInPlace= function(arr){
+  let start =0
+  let currentVal = 0
+  for(let i = arr.length-1;i>=arr.length/2;i--){
+    currentVal = arr[start]
+    arr[start]=arr[i]
+    arr[i]=currentVal
+    start++
+    console.log(currentVal)
+  }
+  console.log('arr',arr)
+
+}
+reverseArrayInPlace([1,2,3,4])
+
+const recursive = function(num){
+  let val = 1
+  if(num==1){
+    return num
+  }else{
+    return recursive(num-1)*num
+  }
+}
+console.log(recursive(4))
