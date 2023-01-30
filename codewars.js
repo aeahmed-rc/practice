@@ -1208,25 +1208,24 @@ function likes(names) {
 
 function posAverage(s) {
   let arr = s.replace(/\s*,\s*/g, ",").split(",");
-  console.log(arr)
+  console.log(arr);
   let windowStart = 0;
   let windowEnd = 1;
   let similarPosition = 0;
- let smallerLetterValues=0
-  let nextS =[]
+  let smallerLetterValues = 0;
+  let nextS = [];
   while (windowStart < arr.length - 2) {
-//     console.log(windowStart)
-    if (windowEnd === arr.length ) {
-//       console.log('wi',windowEnd)
+    //     console.log(windowStart)
+    if (windowEnd === arr.length) {
+      //       console.log('wi',windowEnd)
       windowStart++;
       windowEnd = windowStart + 1;
-   
     }
-//     console.log(windowStart, windowEnd);
+    //     console.log(windowStart, windowEnd);
     let orignialValue = arr[windowStart].split("");
 
     nextS = arr[windowEnd].split("");
-//     console.log(orignialValue,nextS)
+    //     console.log(orignialValue,nextS)
 
     for (
       smallerLetterValues = 0;
@@ -1238,23 +1237,23 @@ function posAverage(s) {
 
       if (orignialValue[smallerLetterValues] === nextS[smallerLetterValues]) {
         similarPosition++;
-//         console.log(orignialValue[smallerLetterValues])
+        //         console.log(orignialValue[smallerLetterValues])
       }
       //       console.log(smallerLetterValues,nextS)
     } // end of loop through each number in substring
     smallerLetterValues = 0;
 
-      windowEnd++;
+    windowEnd++;
 
-  console.log('sP',similarPosition)
+    console.log("sP", similarPosition);
   }
-  console.log('len',nextS.length)
+  console.log("len", nextS.length);
 
-  let n = (arr.length * (arr.length - 1))/ 2;
-  
-  console.log(n)
+  let n = (arr.length * (arr.length - 1)) / 2;
 
-  return similarPosition / (n*arr.length*nextS.length)*1000;
+  console.log(n);
+
+  return (similarPosition / (n * arr.length * nextS.length)) * 1000;
   // your code
 }
 
@@ -1263,345 +1262,379 @@ let ans = posAverage(
 );
 console.log(ans);
 function persistence(num) {
-  // take the num split it multiply the digits 
+  // take the num split it multiply the digits
   //store new multiplied in vairable
   // check if it still has len>1 then split and repeat process
-num =num.toString()
-let count =0
-while(num.length>1){
-  let product =1
-  for(let i = 0;i<num.length;i++){
-    product*=num[i]
+  num = num.toString();
+  let count = 0;
+  while (num.length > 1) {
+    let product = 1;
+    for (let i = 0; i < num.length; i++) {
+      product *= num[i];
+    }
+    num = product.toString().split("").map(Number);
+    count++;
   }
-  num=product.toString().split('').map(Number)
-  count++
-}
-  return count
-   //code me
+  return count;
+  //code me
 }
 
 function isValidWalk(walk) {
-  let opposites={
-    n:'s',
-    w:'e',
-    s:'n',
-    e:'w'
+  let opposites = {
+    n: "s",
+    w: "e",
+    s: "n",
+    e: "w",
+  };
+  let dic = {};
+  let numberOfDirections = 0;
+  let bool = false;
+  if (walk.length != 10) {
+    return bool;
   }
-  let dic={}
-  let numberOfDirections=0
-    let bool = false 
-  if(walk.length!=10){
-    return bool 
-  }console.log(walk)
-  for(let direction=0;direction<walk.length;direction++){
-    dic[walk[direction]]+=1
-    if( !dic[walk[direction]]>=1){
-      dic[walk[direction]]=1
+  console.log(walk);
+  for (let direction = 0; direction < walk.length; direction++) {
+    dic[walk[direction]] += 1;
+    if (!dic[walk[direction]] >= 1) {
+      dic[walk[direction]] = 1;
     }
-    
   }
-    console.log(dic)
-    console.log(opposites)
-    for(var k in dic){
-      if(dic[k]==dic[opposites[k]]){
-        console.log(dic[k],dic[opposites[k]])
-        bool = true 
-      }else{
-        bool=false 
-      }
-    return bool
+  console.log(dic);
+  console.log(opposites);
+  for (var k in dic) {
+    if (dic[k] == dic[opposites[k]]) {
+      console.log(dic[k], dic[opposites[k]]);
+      bool = true;
+    } else {
+      bool = false;
     }
-  
-    //insert brilliant code here
+    return bool;
   }
 
+  //insert brilliant code here
+}
 
-  function isAValidMessage(message){
-    // split message into numbers and the words
-    //use number to verify if same as length, have boolen set to true but if one is not same lenght
-    //set bool to false and return
-    let number =0
-    let numbers=[]
-    let words=[]
-    let dict={}
-    let word=''
-  for(let i =0;i<message.length;i++){
-  
-    console.log(message[i])
-    if(message[i].match(/\d+/)&&message[i+1].match(/\d+/)){
-       
-         number=message[i]+message[i+1]
-  //        dict[number]=0
-  
-      
-  
-      console.log('number',number)
-  
-      word=''
-      i++
-  
-  }else if(message[i].match(/\d+/)){
-    console.log('elseif',message[i])
-    number=message[i]
-  //        dict[number]=0
-  
-        word=''
-  }
-    else{
-    word+=message[i]
-  
-    console.log('word',word)
-       dict[word]=number
-  }
-   
-  //   dict[word]=number
-  
-     console.log(dict)
-  }
-  
-  
-  
-  }
+function isAValidMessage(message) {
+  // split message into numbers and the words
+  //use number to verify if same as length, have boolen set to true but if one is not same lenght
+  //set bool to false and return
+  let number = 0;
+  let numbers = [];
+  let words = [];
+  let dict = {};
+  let word = "";
+  for (let i = 0; i < message.length; i++) {
+    console.log(message[i]);
+    if (message[i].match(/\d+/) && message[i + 1].match(/\d+/)) {
+      number = message[i] + message[i + 1];
+      //        dict[number]=0
 
-  function findChildren(dancingBrigade) {
-    let sor = dancingBrigade.split('')
-    let m = sor.map(le=>le.toLowerCase()).sort()
-    let currentLetter=''
-    let arr=[]
-    console.log(m)
-    for(let i=0;i<m.length;i++){
-      console.log(currentLetter)
-      if(m[i]!=currentLetter.toLowerCase()&&m[i]!=currentLetter.toUpperCase()){
-        console.log(m[i])
-        currentLetter=m[i].toUpperCase()
-         console.log(currentLetter)
-        arr.push(currentLetter)
-        
-      }else{
-        currentLetter=m[i]
-        arr.push(m[i])
-        
-      }
+      console.log("number", number);
+
+      word = "";
+      i++;
+    } else if (message[i].match(/\d+/)) {
+      console.log("elseif", message[i]);
+      number = message[i];
+      //        dict[number]=0
+
+      word = "";
+    } else {
+      word += message[i];
+
+      console.log("word", word);
+      dict[word] = number;
     }
-    console.log(arr.join(''));
-    return arr.join('')
+
+    //   dict[word]=number
+
+    console.log(dict);
   }
+}
 
+function findChildren(dancingBrigade) {
+  let sor = dancingBrigade.split("");
+  let m = sor.map((le) => le.toLowerCase()).sort();
+  let currentLetter = "";
+  let arr = [];
+  console.log(m);
+  for (let i = 0; i < m.length; i++) {
+    console.log(currentLetter);
+    if (
+      m[i] != currentLetter.toLowerCase() &&
+      m[i] != currentLetter.toUpperCase()
+    ) {
+      console.log(m[i]);
+      currentLetter = m[i].toUpperCase();
+      console.log(currentLetter);
+      arr.push(currentLetter);
+    } else {
+      currentLetter = m[i];
+      arr.push(m[i]);
+    }
+  }
+  console.log(arr.join(""));
+  return arr.join("");
+}
 
-  // return the number of small chocolates required to achieve 
-// the desired goal. Return -1 if the goal cannot be achieved 
+// return the number of small chocolates required to achieve
+// the desired goal. Return -1 if the goal cannot be achieved
 function makeChocolates(small, big, goal) {
-  let currentSmall=small
-  let currentBig=big
-  if(small*2+big*5>=goal){
-    while(goal>0){
-  if(goal % 5==0 && currentBig!=0){
-    goal-=5
-    currentBig--
-  }else if(currentSmall!=0 && goal>1){
-    goal-=2
-    currentSmall--
-  }else{
-    return -1
+  let currentSmall = small;
+  let currentBig = big;
+  if (small * 2 + big * 5 >= goal) {
+    while (goal > 0) {
+      if (goal % 5 == 0 && currentBig != 0) {
+        goal -= 5;
+        currentBig--;
+      } else if (currentSmall != 0 && goal > 1) {
+        goal -= 2;
+        currentSmall--;
+      } else {
+        return -1;
+      }
+    }
+  } else {
+    return -1;
   }
-}
-  }
-else{
-  return -1
-}
-  console.log(goal)
-  console.log(small-currentSmall)
-return small-currentSmall
- 
-//   return -100;
-}
+  console.log(goal);
+  console.log(small - currentSmall);
+  return small - currentSmall;
 
-
-
+  //   return -100;
+}
 
 function findUs(n1, n2, k, factors, digits) {
+  let range = n1 + n2 * k;
 
-  let range=n1+(n2*k)
+  let re = [];
 
-  let re=[]
+  let boo = 0;
+  let numbers = [];
+  let factorsStart = 0;
+  let digitStart = 0;
 
-  let boo = 0
-  let numbers =[]
-  let factorsStart=0
-  let digitStart=0
+  // [30,36,42,etcc] factors=[2,4] digitd=[2,6]
 
-// [30,36,42,etcc] factors=[2,4] digitd=[2,6]
-
-  
-for(let n=n1;n<=range;n++){
-  for(let j=0;j<factors.length;j++){
-    if(n % factors[j]==0 && n.toString().indexOf(digits[j])>-1 ){
-      boo++
-    }else{
-      boo--
+  for (let n = n1; n <= range; n++) {
+    for (let j = 0; j < factors.length; j++) {
+      if (n % factors[j] == 0 && n.toString().indexOf(digits[j]) > -1) {
+        boo++;
+      } else {
+        boo--;
+      }
+    }
+    if (boo == factors.length) {
+      re.push(n);
+      boo = 0;
+    } else {
+      boo = 0;
     }
   }
-  if(boo==factors.length){
-    re.push(n)
-    boo=0
 
-  }else{
-    boo=0
-  }
-}
-
-    return re;
+  return re;
 }
 
 function sumDigNthTerm(initval, patternl, nthterm) {
   var sum = initval;
-  for (var i = 0; i < nthterm-1; i++) {
-    sum += patternl[i%patternl.length]   
+  for (var i = 0; i < nthterm - 1; i++) {
+    sum += patternl[i % patternl.length];
   }
-  return (sum.toString().split("")).reduce((a,b) => Number(a)+Number(b))
+  return sum
+    .toString()
+    .split("")
+    .reduce((a, b) => Number(a) + Number(b));
 }
-function amountOfPages(summary){
+function amountOfPages(summary) {
   // p-summary = number of total digits the book has
   //return how many digits it takes to get to the summary
-  // ex: summary = 25 so 1 to 17 is 25 digits 
+  // ex: summary = 25 so 1 to 17 is 25 digits
   // print values and count how mant digits until value reaches summary
   // more then 9 the digits are split and count each one then return last value after summary is reached
 
-  let digits =0
-  for(let i=1;i<=summary;i++){
-    digits+=i.toString().length
-    if(digits===summary){
-      digits=i
-      break
+  let digits = 0;
+  for (let i = 1; i <= summary; i++) {
+    digits += i.toString().length;
+    if (digits === summary) {
+      digits = i;
+      break;
     }
   }
-  console.log(digits)
-return digits
-  
+  console.log(digits);
+  return digits;
 }
 
 function uniqCounts(xs) {
   // if they are all unique take length and multiply until 1 from len
   // if not unique just take the length
   // permutation = length *length-1/number each letter shows up
-  console.log(xs)
-  let len=BigInt(xs.length)
-  let set = xs.toUpperCase().split('')
+  console.log(xs);
+  let len = BigInt(xs.length);
+  let set = xs.toUpperCase().split("");
 
-  let dict={}
-  let top=1n
-  let bottom=1n
-   while(len>0){
-     top*=len
-     len--
-   }
-for(let i=0;i<set.length;i++){
-  dict[set[i]]=dict[set[i]]?dict[set[i]]+=1n:1n
-
-}
-// set.forEach(s=>dict[s]=dict[s]?dict[s]+1n:1n)
-  console.log(xs,dict)
-  for (const key in dict) {// ex= {A:2n,B:3n}
-    while(dict[key]>1n){//2n>1
-bottom*=dict[key] // bottom =1n and A= 2n ,1n*=2n,bottom=2n A was 2n then 1n so 2n*=1n
-dict[key]--
-    }// goes to next key after while loop no longer is true
+  let dict = {};
+  let top = 1n;
+  let bottom = 1n;
+  while (len > 0) {
+    top *= len;
+    len--;
+  }
+  for (let i = 0; i < set.length; i++) {
+    dict[set[i]] = dict[set[i]] ? (dict[set[i]] += 1n) : 1n;
+  }
+  // set.forEach(s=>dict[s]=dict[s]?dict[s]+1n:1n)
+  console.log(xs, dict);
+  for (const key in dict) {
+    // ex= {A:2n,B:3n}
+    while (dict[key] > 1n) {
+      //2n>1
+      bottom *= dict[key]; // bottom =1n and A= 2n ,1n*=2n,bottom=2n A was 2n then 1n so 2n*=1n
+      dict[key]--;
+    } // goes to next key after while loop no longer is true
   }
 
-  let ans= top/bottom
-  return ans
+  let ans = top / bottom;
+  return ans;
 }
 // let un=uniqCounts("ABcDEFgHIJbaslidbailsbdilasbdkanmsdklhkbHSJKHVDASH")
 // console.log(un)
 
-
-
 function uniqCount(xs) {
-  const str = xs.toUpperCase().split('');
+  const str = xs.toUpperCase().split("");
   const size = BigInt(str.length);
-  const fact = x =>{ 
-    x<2n ? 1n : x * fact(x-1n);
-  }
-  console.log(fact)
+  const fact = (x) => {
+    x < 2n ? 1n : x * fact(x - 1n);
+  };
+  console.log(fact);
   let reps = {};
-  str.forEach(letter => reps[letter] = reps[letter] ? reps[letter] + 1n : 1n);
+  str.forEach(
+    (letter) => (reps[letter] = reps[letter] ? reps[letter] + 1n : 1n)
+  );
 
   const perm = fact(size);
-  const dups = Object.values(reps).filter(r=>r>1n).map(r=>fact(r)).reduce((total, rep)=> total*rep, 1n);
+  const dups = Object.values(reps)
+    .filter((r) => r > 1n)
+    .map((r) => fact(r))
+    .reduce((total, rep) => total * rep, 1n);
   // .map(r=>fact(r)) .reduce((total, rep)=> total*rep, 1n);
-  console.log(reps)
-  
-  console.log(perm)
+  console.log(reps);
 
-  
+  console.log(perm);
+
   // return perm/dups;
 }
 
-
 //Binary tree search for target
 
-function binarySearch (node, target){
-  console.log('bin')
-  if(node.val==null){
-    return false
-  }
-  else if(node.value===target){//base case where we stop recurrsion
+function binarySearch(node, target) {
+  console.log("bin");
+  if (node.val == null) {
+    return false;
+  } else if (node.value === target) {
+    //base case where we stop recurrsion
     return true;
   } else {
-   if(node.value>=target){
-      return binarySearch(node.left,target)
-    
-    }else if(node.value<target){
-      return binarySearch(node.right,target)
-     
+    if (node.value >= target) {
+      return binarySearch(node.left, target);
+    } else if (node.value < target) {
+      return binarySearch(node.right, target);
     }
-    
-  // still to come
+
+    // still to come
   }
-
-
-
 }
 // console.log(binarySearch([10,5,12,4,7,11,9],4))
 
+var moveZeroes = function (nums) {
+  let p1 = 0;
+  let val = 0;
+  for (let p2 = 0; p2 < nums.length; p2++) {
+    if (nums[p2] != 0) {
+      val = nums[p2];
+      nums[p2] = 0;
+      nums[p1] = val;
+      p1++;
+    }
+  }
 
-var moveZeroes = function(nums) {
-  let p1=0
-  let val=0
-  for(let p2=0;p2<nums.length;p2++){
-      if(nums[p2]!=0){
-           val=nums[p2]
-          nums[p2]=0
-          nums[p1]=val
-          p1++
-      }       
-}
-     
-  console.log(nums)
+  console.log(nums);
   // return nums
 };
 
-var reverseArrayInPlace= function(arr){
-  let start =0
-  let currentVal = 0
-  for(let i = arr.length-1;i>=arr.length/2;i--){
-    currentVal = arr[start]
-    arr[start]=arr[i]
-    arr[i]=currentVal
-    start++
-    console.log(currentVal)
+var reverseArrayInPlace = function (arr) {
+  let start = 0;
+  let currentVal = 0;
+  for (let i = arr.length - 1; i >= arr.length / 2; i--) {
+    currentVal = arr[start];
+    arr[start] = arr[i];
+    arr[i] = currentVal;
+    start++;
+    console.log(currentVal);
   }
-  console.log('arr',arr)
+  console.log("arr", arr);
+};
+reverseArrayInPlace([1, 2, 3, 4]);
 
-}
-reverseArrayInPlace([1,2,3,4])
-
-const recursive = function(num){
-  let val = 1
-  if(num==1){
-    return num
-  }else{
-    return recursive(num-1)*num
+const recursive = function (num) {
+  let val = 1;
+  if (num == 1) {
+    return num;
+  } else {
+    return recursive(num - 1) * num;
   }
-}
-console.log(recursive(4))
+};
+
+const DPF = function (numArray, key) {
+  // return true or false if key is in numArray
+  //start in middle of the sorted array if numArray[index]>key then move left, if < move right
+  // brute force could do numArray.includes(key)!=-1 return true
+ let keyIsFound = true
+ let midIdx = Math.floor(numArray.length/2)
+ let middleElement =numArray[midIdx]
+ if(middleElement==key){
+  return keyIsFound
+ }else if(middleElement > key && numArray.length>1){
+  return DPF(numArray.splice(0,midIdx),key)
+
+ }else if(middleElement<key && numArray.length>1){
+  return DPF(numArray.splice(midIdx,numArray.length-1),key)
+ }else{
+  keyIsFound = false
+  return keyIsFound
+ }
+
+};
+
+/* Given an integer array nums where the elements are sorted in ascending order, convert it to a 
+height-balanced
+binary search tree.
+*/
+var sortedArrayToBST = function(nums) {
+  // want to have equal nodes on both side to get balanced 
+  //or height of one side cant be more then 1 more then other side 
+ // need base case to return val
+ // need recursive helper function
+ //sorted arrray = BST
+ // mid == root node of tree left of array is left of root , right of array is right of root
+ if (nums.length===0){
+     return null
+ }
+  function helperFunction(nums,left,right){
+      if(left>right){
+          return null
+      }
+      let midPoint = Math.floor(left+(right-left)/2)
+      console.log(nums[midPoint])
+      let node= new TreeNode(nums[midPoint])
+
+      node.left=helperFunction(nums,left,midPoint-1)
+      node.right = helperFunction(nums,midPoint+1,right)
+      console.log(node.val)
+      return node
+  }
+
+ return helperFunction(nums,0,nums.length-1)
+
+
+  
+};
