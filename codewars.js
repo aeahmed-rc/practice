@@ -1638,3 +1638,19 @@ var sortedArrayToBST = function(nums) {
 
   
 };
+
+// practice recursion with fibonocci
+
+const Fib = function(position){
+  // [1,1,2,3,5,8]
+ if(position<3){
+  return 1
+ }else{
+  return Fib(position-1)+Fib(position-2)
+ }
+}
+console.log(Fib(4))
+
+//  fib(4-1)+fib(4-2) - fib(3)+fib(2)-fib(2)+fib(1)+fib(2)-1+1+1
+//fib(3-1)+fib(3-2)-fib(2)+fib(1)-1+2
+//fib(2-1)+fib(2-2) - fib(1)+fib(0)-1+1
