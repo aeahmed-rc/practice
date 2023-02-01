@@ -1654,3 +1654,81 @@ console.log(Fib(4))
 //  fib(4-1)+fib(4-2) - fib(3)+fib(2)-fib(2)+fib(1)+fib(2)-1+1+1
 //fib(3-1)+fib(3-2)-fib(2)+fib(1)-1+2
 //fib(2-1)+fib(2-2) - fib(1)+fib(0)-1+1
+//fib(3)-- fib(2)+fib(1)- 1+1 = 2
+//fib(4)-- fib(3)+fib(2)-2+1 =3 
+//fib(5)== fib(4)+fib(3)= 3+2 = 5
+//fib(6) == fib(5)+fib(4) = 5 +3 = 8
+
+const fibMemo = function(index,cache){
+ cache = cache||[]
+  if(cache[index]){
+    return cache[index]
+  }else{
+    if(index<3){
+      return 1
+    }else{
+      cache[index]=fibMemo(index-1,cache)+fibMemo(index-2,cache)
+  }
+    }
+    console.log(cache)
+    return cache[index]
+}
+console.log(fibMemo(5))
+
+const twoSums = function(numArray,sum){
+  //numArray = [1,6,3,4,4],sum =7
+  // dict {1:6 compliment}
+  // get array val subtract from sum see if its compliment is in dict if so push the val and compliment
+  let complimnets ={}
+  let comArray =[]
+  for(let i=0;i<numArray.length;i++){
+    if(complimnets.hasOwnProperty(numArray[i])){
+      comArray.push([numArray[i],complimnets[numArray[i]]])
+    }else{
+      complimnets[sum-numArray[i]]=numArray[i]
+    }
+  }
+  console.log(comArray)
+}
+// twoSums([1,6,3,4,4,5],7)
+
+const twoSumsNoDuplicate = function(numArray,sum){
+  //numArray = [1,6,3,4,4],sum =7
+  // dict {1:#of ones available compliment}
+  // get array val subtract from sum see if its compliment is in dict if so push the val and compliment
+  let complimnets ={}
+  let comArray =[]
+  for(let i=0;i<numArray.length;i++){
+    if(complimnets.hasOwnProperty(sum-numArray[i])){
+      if(complimnets[sum-numArray[i]]>=1){
+        complimnets[sum-numArray[i]]--
+        comArray.push([numArray[i],sum-numArray[i]])
+        
+      }else{
+        continue
+      }
+      
+    }else{
+      complimnets[numArray[i]]=1
+    }
+  }
+  console.log(comArray)
+}
+twoSumsNoDuplicate([1,6,3,4,4,5],7)
+// using memoization to find the fibnoci value at index
+//O(N) utilizing cache
+const Fibmemo = function(index){
+  //create a cache of indexes seen
+  let cache = []
+  if(index<3){
+    return 1
+  }else{
+    if(cache[index]){
+      return cache[index]
+    }else{
+      cache[index]=Fibmemo(index-1)+Fibmemo(index-2)
+    }
+  }
+  return cache[index]
+}
+console.log(Fibmemo(5))
