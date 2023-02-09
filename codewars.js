@@ -1703,18 +1703,19 @@ const twoSumsNoDuplicate = function(numArray,sum){
       if(complimnets[sum-numArray[i]]>=1){
         complimnets[sum-numArray[i]]--
         comArray.push([numArray[i],sum-numArray[i]])
-        
-      }else{
-        continue
+        if(complimnets[sum-numArray[i]]<1){
+          delete complimnets[sum-numArray[i]]
+        }
       }
       
     }else{
       complimnets[numArray[i]]=1
     }
+    console.log(complimnets)
   }
   console.log(comArray)
 }
-twoSumsNoDuplicate([1,6,3,4,4,5],7)
+twoSumsNoDuplicate([1,6,3,5,4],7)
 // using memoization to find the fibnoci value at index
 //O(N) utilizing cache
 const Fibmemo = function(index){
@@ -1731,4 +1732,62 @@ const Fibmemo = function(index){
   }
   return cache[index]
 }
-console.log(Fibmemo(5))
+
+
+//Sieve of Erastosthenes
+const primeValues = function(n){
+    let primeArray = [2,]
+    for(let i=3;i<=n;i +=2){
+      if(i %2 !=0){
+        primeArray.push(i)
+      }
+    }
+    return primeArray
+}
+console.log(primeValues(20))
+
+const sieve = function(n){
+  // mark all values as true from 2 to n
+  // then go through each and find mutliples of 2 to n and mark as false notprime
+  //loop through that and push values marked true into primes array
+  // false = not prime
+  let fir = []
+  for(let i =0;i<=n;i++){
+    fir.push(true)
+  }
+  console.log(fir)
+  fir[0]=false
+  fir[1]=false
+  // go through each val and if multiple then its not prime
+  for(let i =2;i<Math.sqrt(n);i++){
+    for(let j = 2;i*j<=n;j++){
+      fir[i*j]=false
+    }
+  }
+
+  let prime=[]
+  for(let i =2;i<=fir.length;i++){
+    if(fir[i]){
+      prime.push(i)
+    }
+  }
+  console.log(prime)
+
+}
+sieve(20)
+
+// traversing a bonary tree
+
+// class BinarySearchTree:
+//     def __init__(self, value):
+//         self.value = value
+//         self.left_child = None
+//         self.right_child = None
+
+//     def find_node(self, value):
+//         if value < self.value and self.left_child: // this code is checking if value is less then current node and if that node has a left child--self.left_child .if so recurssion on left starts
+//             return self.left_child.find_node(value)
+//         if value > self.value and self.right_child:
+//             return self.right_child.find_node(value)
+
+//         return value == self.value
