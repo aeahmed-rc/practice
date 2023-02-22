@@ -1791,3 +1791,123 @@ sieve(20)
 //             return self.right_child.find_node(value)
 
 //         return value == self.value
+
+const grid = function(m,n){
+  //can traverse right m times and down n times
+  if(m ==1 || n==1){
+    return 1
+  }
+  let numberOfPaths=0
+  for(let i =0;i<m;i++){
+
+  }
+}
+
+
+
+// Javascript program to count all possible paths from
+// top left to top bottom right using
+// Recursive Dynamic Programming
+ 
+// Create an empty 2D table
+let DP = new Array(4);
+for(let i = 0; i < 4; i++) {
+     
+    DP[i] = new Array(4);
+    console.log('DP',DP)
+    for(let j = 0; j < 4; j++) {
+        DP[i][j] = 0;
+    }
+}
+ 
+// Returns count of possible paths to reach
+// cell at row number m and column number n from
+// the topmost leftmost cell (cell at 1, 1)
+function numberOfPaths(n, m, DP){
+ 
+    if(n == 1 || m == 1)
+        return DP[n][m] = 1;
+     
+    // Add the element in the DP table
+    // If it was not computed before
+    if(DP[n][m] == 0)
+        console.log(DP,n,m)
+        DP[n][m] = numberOfPaths(n - 1, m,DP) + numberOfPaths(n, m - 1,DP);
+
+    return DP[n][m];
+}
+// binary tree DFS problem
+
+/*
+ * Complete the 'numPaths' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts 2D_INTEGER_ARRAY warehouse as parameter.
+ */
+
+function numPaths(warehouse) {
+  // Write your code here
+  // can move either right or down
+  // 1= indicates open section 0= blocked section
+  // return number of paths through the matrix
+  // traversing through tree or DFS
+  // console.log(warehouse)
+  // row and column 
+  // row-1,colum + colum-1 ,row
+  // (0,0)
+  // if m or n ===1 
+  // while traversing check nodes value if 1 return 1 
+  // if 0 return 0 
+  // length of array = column
+  // length of subarrays = row
+  let col = warehouse.length
+  let row = warehouse[1].length
+
+  let DS = new Array(col);
+  for (let i = 0; i < DS.length; i++) {
+      DS[i] = new Array(row);
+  }
+  
+  // returns number of paths from (0, 0) to (col, row)
+  function helper(col,row){
+      //console.log(" col is ", col, "row is ", row)
+
+      // if you are at (0, 0), there's nowhere else to go, so you check if (0,0) is open and return 1 if it is "open" (i.e. warehouse[0][0] = 1)
+      if(warehouse[col][row]===0){
+          return 0
+      }
+      
+      // base case return 1 when we get to bottom 
+      if(col === 0 && row === 0) {  
+          return 1
+      }
+             
+      // store recusrive call in data structure 
+      //DS[col][row] = helper(col, row)
+      // if ( DS[col][row]){return DS[col][row]}
+      //   else (DS[col][row] =  (execute the logic to obtain the value) )
+      // console.log('DS',DS[col][row])
+      if(DS[col][row]){
+          console.log("Hi I work for ", col, ", ", row, " value cached is ",  DS[col][row])
+          return DS[col][row]
+      }else{
+          
+          let returnValue = 0;
+          if(row >0){
+              returnValue += helper (col, row-1)
+          }
+          // if (can go to the left), returnValue += helper(col-1, row)
+          if(col>0){
+              returnValue += helper (col-1, row)
+          }
+    
+          console.log('re', returnValue)
+          DS[col][row] = returnValue
+          console.log('DS',DS[col][row])
+          return returnValue
+      }
+  }
+  
+  return helper (col - 1, row - 1);
+
+}
