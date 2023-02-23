@@ -1910,4 +1910,54 @@ function numPaths(warehouse) {
   
   return helper (col - 1, row - 1);
 
+
 }
+
+// linked list practice
+class Node{
+  constructor(value){
+    this.value = value
+    this.next = null
+  }
+}
+
+class LinkedList{
+  
+    constructor(value){
+      const NewNode = new Node(value)
+      this.head = NewNode
+      this.tail = NewNode
+      this.length = 1
+    }
+  
+  
+}
+const newNode = new LinkedList(4)
+const newNode2 = new LinkedList(45)
+console.log(LinkedList)
+
+// utiliozing fast and slow method on loopy linked list
+// find happy number
+
+function isHappyNumber(n){
+  // your code will replace this placeholder return statement
+  let slow = sumDigits(n)
+  let fast = sumDigits(slow)
+
+  while(slow!=fast){
+      slow=sumDigits(slow)
+      fast=sumDigits(sumDigits(fast))
+  }
+  return slow == 1
+}
+function sumDigits(number) {
+  let totalSum = 0;
+  while (number > 0) {
+      let temp = Math.floor(number / 10),
+          digit = number % 10;
+      number = temp;
+      totalSum += digit ** 2;
+  }
+  return totalSum;
+}
+
