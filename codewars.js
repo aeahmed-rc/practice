@@ -1967,3 +1967,50 @@ function arithmeticSequenceElements(a,r,n) {
   while (--n) ret.push(a+=r);
   return ret.join(', ')
 }
+
+
+function sum(arr){
+  console.log(arr)
+ if(arr.length==0){
+  return 0
+ }
+ return arr[0]+ sum(arr.slice(1))
+}
+
+// practice quick sort
+function quickSort(arr){
+  if(arr.length<2){
+    return arr
+  }
+  let pivot = arr[0]
+  let lesser =[]
+  let greater =[]
+  for(let i = 1;i<arr.length;i++){
+    if(arr[i]<=pivot){
+      lesser.push(arr[i])
+    }else{
+      greater.push(arr[i])
+    }
+  }
+  return quickSort(lesser).concat(pivot,quickSort(greater))
+}
+console.log('quick', quickSort([4,5,3]))
+
+var longestConsecutive = function(nums) {
+  // find all values that are right after each other
+  //  create set to reove duplicates
+  // check if the num in nums is start of a sequence
+  // if it is then increase by 1 and see if it nums has num+1 and so on
+  let set = new Set(nums)
+  let longest = 0
+  for(const num of nums){
+      if(!set.has(num-1)){
+          let length =0
+          while(set.has(num+length)){
+              length++
+              longest = Math.max(length,longest)
+          }
+      }
+  }
+  return longest
+};
