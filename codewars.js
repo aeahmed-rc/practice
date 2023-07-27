@@ -2050,3 +2050,23 @@ function order(words){
  console.log(Object.values(arr).join(' '))
 return Object.values(arr).join(' ')
 }
+
+//You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+function sortArray(array) {
+  // take the odd numbers put in separate array
+    // sort them
+    // loop through array if current val is odd replace i with value from the sorted array
+    function checkODD(num){
+    return num %2!=0
+  }
+  const oddNumbers = array.filter(checkODD).sort((a, b) => a - b);
+    
+     let sortedOddIndex = 0;
+    const resultArray = array.map((num) => {
+      if (checkODD(num)) {
+        return oddNumbers[sortedOddIndex++];
+      }
+      return num;
+    });
+    return resultArray
+  }
