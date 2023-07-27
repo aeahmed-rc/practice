@@ -2014,3 +2014,39 @@ var longestConsecutive = function(nums) {
   }
   return longest
 };
+
+
+//Your order, please 6 kyu
+function order(words){
+  // ...
+  // pa: string 
+  // return sorted string
+  // ex: each word will have poisition in array needs to be in
+  // psudeo:
+  // split words into array
+  // loop through each word
+  // store word in variable
+  // find number in each word.split 
+  // array.splice(start, deleteCount, item1, item2, ..., itemN)
+  if(words.length==0){
+    return ""
+  }
+  let spl = words.split(' ')
+  console.log(spl)
+  let word = ''
+  let spl1 = 0
+  let arr ={}
+  
+  while(spl1<spl.length){
+    word=spl[spl1].split('')
+    for(let i=0;i<word.length;i++){
+      if(Number.isInteger(Number.parseInt(word[i]))){
+        console.log(word[i])
+       arr[word[i]]=word.join('')
+      }
+    }
+     spl1++
+  }
+ console.log(Object.values(arr).join(' '))
+return Object.values(arr).join(' ')
+}
