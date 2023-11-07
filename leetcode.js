@@ -15,8 +15,31 @@ var maxProfit = function(prices) {
         if(prices[r] < prices[l]){
             l=r
         }else{ // get max profit prices[r] sell is higher then prices[l]
-            max_profit=Math.max(maxProfit,prices[r]-prices[l])
+            max_profit=Math.max(max_profit,prices[r]-prices[l])
         }
     }
     return max_profit
 }
+console.log(maxProfit([7,1,2,4]))
+
+//two pointer
+var isPalindrome = function(s) {
+    // is s the same forward as it is backward
+    // have two pointers on at beginning and one at end 
+    // have them go from left and to right checking to see if the letters are same
+    // until both l and r are at equal values 
+    // first need to remove characters(spaces and alphnumerical)
+    // if letter is same continue 
+    // when there is a letter that isnt same return false 
+    s=s.toLowerCase().replace(/[^a-z0-9]/gi, '')
+    let l =0
+    let output = true
+    for(let r=s.length-1;r>l;r--){
+        if(s[l]!=s[r]){
+            output=false 
+        }
+        l++
+    }
+    console.log(output)
+    return output
+};
