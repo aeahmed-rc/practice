@@ -43,3 +43,21 @@ var isPalindrome = function(s) {
     console.log(output)
     return output
 };
+// does list include the words
+function wordListtocheck(List,wordstocheck){
+return List.map(input=>{
+    if(check(input,wordstocheck)){
+        return 'spam'
+    }else{
+        return 'not'
+    }
+})
+}
+function check(inputString,wordstocheck){
+for(let word of wordstocheck){
+    if(inputString.includes(word)){
+        return true 
+    }
+}
+}
+console.log(wordListtocheck(['here to stay','does this work'],['to','none']))
