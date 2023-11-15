@@ -61,3 +61,33 @@ for(let word of wordstocheck){
 }
 }
 console.log(wordListtocheck(['here to stay','does this work'],['to','none']))
+//Leet code 2653
+var getSubarrayBeauty = function(nums, k, x) {
+    // go through array get subarray of the nums up to k length,
+    // get the xth smalles value push to a new array
+    // use sliding window since it wants subarray
+    // array returned must be n-k+1 in length
+    //once r+1 == k take subarray and find smallest val
+    // then remove l vale and go up by one and that new subarray get its lowest
+    // while length-l >k
+    let arr=[]
+    // how do i check xth value // sort value an get index of x-1
+    let r=0
+    let l=0
+    while(r<nums.length||r-l>=k){
+        // get subarray from r-l+1==k
+        // sort that array get xth value and push to arr
+        // remove nums[l]
+        //l++
+        // if nums[l] or nums[r] arent negative push a zero instead
+        if(r-l+1==k){
+            let subset = nums.slice(l,r+1)
+            let sort = subset.sort(function(a,b){return a-b})
+            arr.push(sort[x-1]>0?0:sort[x-1])
+            l++
+        }
+        r++
+    } 
+    console.log(arr)
+    return arr
+};
